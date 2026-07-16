@@ -5,10 +5,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fixtures data
   const fixtures = [
-    { date: "2026-07-20", time: "19:30", home: "Mavericks", away: "Oxford Futsal", score: "3-1", team: "first" },
-    { date: "2026-07-27", time: "18:00", home: "Cambridge United", away: "Mavericks", score: "2-2", team: "development" },
-    { date: "2026-08-02", time: "20:15", home: "Mavericks", away: "Bedford Futsal", score: "1-4", team: "women" },
-    { date: "2026-08-10", time: "19:00", home: "Mavericks", away: "London Futsal", score: null, team: "first" }
+    {
+      date: "2026-07-20",
+      time: "19:30",
+      home: "Mavericks",
+      away: "Oxford Futsal",
+      score: "3-1",
+      team: "first",
+    },
+    {
+      date: "2026-07-27",
+      time: "18:00",
+      home: "Cambridge United",
+      away: "Mavericks",
+      score: "2-2",
+      team: "development",
+    },
+    {
+      date: "2026-08-02",
+      time: "20:15",
+      home: "Mavericks",
+      away: "Bedford Futsal",
+      score: "1-4",
+      team: "women",
+    },
+    {
+      date: "2026-08-10",
+      time: "19:00",
+      home: "Mavericks",
+      away: "London Futsal",
+      score: null,
+      team: "first",
+    },
   ];
 
   // Simulate loading delay
@@ -20,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    fixtures.forEach(fixture => {
+    fixtures.forEach((fixture) => {
       const li = document.createElement("li");
 
       // Format date
@@ -28,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         weekday: "short",
         day: "numeric",
         month: "short",
-        year: "numeric"
+        year: "numeric",
       });
 
       const isHome = fixture.home === "Mavericks";
@@ -37,8 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const hasScore = fixture.score !== null && fixture.score !== "";
       const scoreParts = hasScore ? fixture.score.split("-") : ["", ""];
 
-      const mavericksScore = hasScore ? (isHome ? scoreParts[0] : scoreParts[1]) : "";
-      const opponentScore = hasScore ? (isHome ? scoreParts[1] : scoreParts[0]) : "";
+      const mavericksScore = hasScore
+        ? isHome
+          ? scoreParts[0]
+          : scoreParts[1]
+        : "";
+      const opponentScore = hasScore
+        ? isHome
+          ? scoreParts[1]
+          : scoreParts[0]
+        : "";
 
       let scoreClass = "";
       if (hasScore) {
@@ -73,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Filtering logic
   const filterButtons = document.querySelectorAll(".fixtures-filters button");
 
-  filterButtons.forEach(button => {
+  filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const filter = button.dataset.filter;
       applyFilter(filter);
@@ -83,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilter(filter) {
     const items = fixturesList.querySelectorAll("li");
 
-    items.forEach(item => {
+    items.forEach((item) => {
       const isCompleted = item.dataset.score !== "";
       const team = item.dataset.team;
 
@@ -92,7 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (filter === "upcoming" && isCompleted) show = false;
       if (filter === "completed" && !isCompleted) show = false;
 
-      if (["first", "development", "women"].includes(filter) && team !== filter) {
+      if (
+        ["first", "development", "women"].includes(filter) &&
+        team !== filter
+      ) {
         show = false;
       }
 
