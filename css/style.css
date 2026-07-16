@@ -69,8 +69,6 @@ body {
 
 /* Mobile styles */
 @media (max-width: 768px) {
-
-  /* Header layout stays horizontal */
   .nav-container {
     display: flex;
     justify-content: space-between;
@@ -79,22 +77,23 @@ body {
     padding: 0.5rem 1rem;
   }
 
-  /* Hamburger button visible */
+  /* Hamburger container */
   .mobile-menu-toggle {
-    display: block;
-    font-size: 2rem;
-    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1001; /* stays above everything */
+    z-index: 1001;
   }
 
-  /* Hide desktop nav by default */
   .main-nav {
     display: none;
     position: absolute;
-    top: 100%; /* sits BELOW the header */
+    top: 100%;
     left: 0;
     width: 100%;
     background: #0b1120;
@@ -102,23 +101,19 @@ body {
     z-index: 1000;
   }
 
-  /* Show nav when active */
   .main-nav.active {
     display: block;
   }
 
-  /* Stack menu items vertically */
   .main-nav ul {
     display: flex;
     flex-direction: column;
-    gap: 0;
     padding: 0;
     margin: 0;
   }
 
   .main-nav ul li {
     width: 100%;
-    text-align: left;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid #1f2937;
   }
@@ -128,16 +123,36 @@ body {
     width: 100%;
   }
 
-  /* Dropdown menu becomes part of the vertical flow */
+  /* Dropdown menu expands naturally */
   .dropdown-menu {
-    position: static;
-    display: none;
     background: #111827;
     padding-left: 1rem;
   }
 
   .dropdown.active .dropdown-menu {
     display: block;
+  }
+
+  /* Hamburger bars */
+  .mobile-menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  /* Animate into X when active */
+  .mobile-menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .mobile-menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
   }
 }
 

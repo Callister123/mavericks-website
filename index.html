@@ -21,7 +21,11 @@
           </a>
         </div>
 
-        <button class="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
 
         <!-- Navigation -->
         <nav class="main-nav">
@@ -52,6 +56,7 @@
 
             toggleBtn.addEventListener("click", () => {
               nav.classList.toggle("active");
+              toggleBtn.classList.toggle("active"); // animate hamburger
             });
 
             // Mobile dropdown toggle
@@ -60,7 +65,7 @@
 
             dropdownToggle.addEventListener("click", (e) => {
               if (window.innerWidth <= 768) {
-                e.preventDefault(); // prevent navigating to teams.html
+                e.preventDefault();
                 dropdown.classList.toggle("active");
               }
             });
