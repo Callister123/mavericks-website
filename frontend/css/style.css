@@ -1,4 +1,6 @@
-/* Global styles */
+/* =========================================
+   Global Styles
+========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +14,10 @@ body {
   line-height: 1.6;
 }
 
-/* Top Navigation */
+
+/* =========================================
+   Header / Navigation
+========================================= */
 .top-nav {
   background: #0b1120;
   border-bottom: 1px solid #1f2937;
@@ -30,16 +35,11 @@ body {
   justify-content: space-between;
 }
 
+/* Logo */
 .logo-area {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 6px;
 }
 
 .logo-link {
@@ -47,6 +47,12 @@ body {
   align-items: center;
   text-decoration: none;
   color: inherit;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
 }
 
 .club-name {
@@ -57,34 +63,7 @@ body {
   text-transform: uppercase;
 }
 
-.main-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.main-nav a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-  transition: 0.2s;
-}
-
-.main-nav a:hover {
-  color: #FFFFFF;
-  border-bottom: 2px solid #ffffff;
-}
-
-.main-nav a.active {
-  color: #DA1415;
-  font-weight: bold;
-}
-
-/* Navigation */
+/* Main Navigation */
 .main-nav {
   background: #020617;
   border-bottom: 1px solid #1f2937;
@@ -93,7 +72,7 @@ body {
 .main-nav ul {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 0.75rem;
   list-style: none;
   padding: 1rem;
 }
@@ -104,13 +83,83 @@ body {
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: 0.2s;
 }
 
 .main-nav a:hover {
   color: #DA1415;
+  border-bottom: 2px solid #DA1415;
 }
 
-/* Sections */
+.main-nav a.active {
+  color: #DA1415;
+  font-weight: bold;
+}
+
+/* Dropdown container */
+.main-nav ul li.dropdown {
+  position: relative;
+}
+
+/* Chevron animation */
+.dropdown-toggle .chevron {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  margin-right: 4px;
+  font-size: 1em;
+}
+
+/* Rotate chevron on hover */
+.main-nav ul li.dropdown:hover .chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu (hidden by default) */
+.main-nav ul li .dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #0b1120;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  z-index: 100;
+
+  /* Fade-in animation */
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Show dropdown on hover */
+.main-nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dropdown menu items */
+.main-nav ul li .dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.main-nav ul li .dropdown-menu li a:hover {
+  background: #1f2937;
+}
+
+
+/* =========================================
+   Sections
+========================================= */
 .section {
   padding: 3rem 1.5rem;
   max-width: 1000px;
@@ -124,6 +173,10 @@ body {
   padding-left: 0.5rem;
 }
 
+
+/* =========================================
+   Join / Contact Form
+========================================= */
 .join-section {
   max-width: 600px;
   margin: 0 auto;
@@ -138,7 +191,7 @@ body {
 
 .contact-form label {
   font-weight: bold;
-  color: #e63946; /* Mavericks red */
+  color: #e63946;
 }
 
 .contact-form input,
@@ -163,7 +216,10 @@ body {
   background: #c62839;
 }
 
-/* Cards for teams */
+
+/* =========================================
+   Cards (Teams Section)
+========================================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -182,26 +238,103 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Fixtures list */
-#fixtures-list {
+
+/* =========================================
+   Fixtures List
+========================================= */
+.fixtures-loading {
+  font-size: 1rem;
+  color: #9ca3af;
+  margin-top: 1rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.fixtures-list {
   list-style: none;
   margin-top: 1rem;
   padding: 0;
 }
 
-#fixtures-list li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #1f2937;
+.fixtures-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.fixtures-filters button {
+  background: #1f2937;
+  color: #fff;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fixtures-filters button:hover {
+  background: #374151;
+}
+
+.fixtures-list li {
+  background: #0b1120;
+  border: 1px solid #1f2937;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fixture-teams {
   font-size: 1rem;
 }
 
-.score {
-  color: #22c55e;
-  font-weight: 600;
+.fixture-date {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: 4px;
 }
 
+.fixture-score {
+  font-weight: bold;
+}
 
-/* Footer */
+.score-win {
+  color: #22c55e;
+}
+
+.score-loss {
+  color: #ef4444;
+}
+
+.score-draw {
+  color: #eab308;
+}
+
+.fixture-icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  margin-right: 8px;
+}
+
+.fixtures-empty {
+  margin-top: 1rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* =========================================
+   Footer
+========================================= */
 .footer {
   text-align: center;
   padding: 20px;
@@ -226,7 +359,7 @@ body {
 .social-links img {
   width: 28px;
   height: 28px;
-  filter: brightness(0) invert(1); /* makes icons white */
+  filter: brightness(0) invert(1);
   transition: opacity 0.2s ease;
 }
 
