@@ -290,6 +290,7 @@ body {
   border-radius: 0.75rem;
   padding: 1.5rem;
   border: 1px solid #1f2937;
+  cursor: pointer;
 }
 
 .card h3 {
