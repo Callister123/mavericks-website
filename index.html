@@ -23,15 +23,6 @@
 
         <button class="mobile-menu-toggle" aria-label="Toggle Menu">☰</button>
 
-        <script>
-          const toggleBtn = document.querySelector(".mobile-menu-toggle");
-          const nav = document.querySelector(".main-nav");
-
-          toggleBtn.addEventListener("click", () => {
-            nav.classList.toggle("active");
-          });
-        </script>
-
         <!-- Navigation -->
         <nav class="main-nav">
           <ul>
@@ -55,6 +46,14 @@
             <li><a href="join.html">Join</a></li>
           </ul>
         </nav>
+        <script>
+          const toggleBtn = document.querySelector(".mobile-menu-toggle");
+          const nav = document.querySelector(".main-nav");
+
+          toggleBtn.addEventListener("click", () => {
+            nav.classList.toggle("active");
+          });
+        </script>
       </div>
     </header>
 
