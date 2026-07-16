@@ -21,11 +21,16 @@
           </a>
         </div>
 
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
         <!-- Navigation -->
         <nav class="main-nav">
           <ul>
             <li><a href="about.html">About</a></li>
-            <li class="dropdown"></li>
             <li class="dropdown">
               <a href="teams.html" class="dropdown-toggle">
                 Teams <span class="chevron">▾</span>
@@ -44,6 +49,28 @@
             <li><a href="join.html">Join</a></li>
           </ul>
         </nav>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.querySelector(".mobile-menu-toggle");
+            const nav = document.querySelector(".main-nav");
+
+            toggleBtn.addEventListener("click", () => {
+              nav.classList.toggle("active");
+              toggleBtn.classList.toggle("active"); // animate hamburger
+            });
+
+            // Mobile dropdown toggle
+            const dropdown = document.querySelector(".dropdown");
+            const dropdownToggle = document.querySelector(".dropdown-toggle");
+
+            dropdownToggle.addEventListener("click", (e) => {
+              if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle("active");
+              }
+            });
+          });
+        </script>
       </div>
     </header>
 
