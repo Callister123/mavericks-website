@@ -69,18 +69,40 @@ body {
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  /* Make nav full width and vertical */
+
+  /* Header layout stays horizontal */
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Hamburger button visible */
+  .mobile-menu-toggle {
+    display: block;
+    font-size: 2rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* stays above everything */
+  }
+
+  /* Hide desktop nav by default */
   .main-nav {
     display: none;
+    position: absolute;
+    top: 100%; /* sits BELOW the header */
+    left: 0;
     width: 100%;
     background: #0b1120;
     padding: 1rem 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 999;
+    z-index: 1000;
   }
 
+  /* Show nav when active */
   .main-nav.active {
     display: block;
   }
@@ -114,25 +136,8 @@ body {
     padding-left: 1rem;
   }
 
-  /* Show dropdown on tap */
   .dropdown.active .dropdown-menu {
     display: block;
-  }
-
-  /* Make hamburger + logo align properly */
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-
-  .mobile-menu-toggle {
-    font-size: 2rem;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
   }
 }
 
