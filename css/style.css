@@ -136,13 +136,13 @@ body {
   /* Hamburger bars */
   .mobile-menu-toggle .bar {
     height: 3px;
-    width: 100%;
+    width: 24px;
     background: #fff;
     border-radius: 3px;
     transition: all 0.3s ease;
   }
 
-  /* Animate into X when active */
+  /* Animate into X */
   .mobile-menu-toggle.active .bar:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
