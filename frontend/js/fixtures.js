@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       li.innerHTML = `
         <div>
           <div class="fixture-teams">
-            <img src="images/icons/${isHome ? "home" : "away"}.svg" class="fixture-icon">
+            <img src="frontend/images/icons/${isHome ? "home" : "away"}.svg" class="fixture-icon">
             ${fixture.home} vs ${fixture.away}
           </div>
           <div class="fixture-date">${dateFormatted} • ${fixture.time}</div>
