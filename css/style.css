@@ -682,3 +682,28 @@ About Section
   background: #b01011;
   transform: translateY(-2px);
 }
+
+.article-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  color: #e5e7eb;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.article-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}

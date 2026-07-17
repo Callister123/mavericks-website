@@ -16,57 +16,23 @@
 
   <body>
     <!-- ===========================
-       Header / Navigation
-  ============================ -->
+    Header / Navigation
+    ============================ -->
     <div id="navbar"></div>
 
-    <!-- Hero Section -->
-    <section class="section">
-      <h2>Men's Development Team</h2>
-
-      <div class="card" style="text-align: center">
-        <img
-          src="images/development-team-squad.jpeg"
-          alt="Men's development team squad posing together on an indoor futsal court in club shirts with a focused, determined team spirit"
-          style="width: 100%; border-radius: 8px; margin-bottom: 1rem"
-        />
-        <p>
-          The Mavericks Development Team focuses on nurturing young talent and
-          developing their skills for future success.
-        </p>
-      </div>
-    </section>
-
-    <!-- Staff Section -->
-    <section class="section">
-      <h2>Staff</h2>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Head Coach</h3>
-          <p>Flavio Damasio</p>
-        </div>
-
-        <div class="card">
-          <h3>Assistant Coach</h3>
-          <p>N/A</p>
-        </div>
-
-        <div class="card">
-          <h3>Team Physio</h3>
-          <p>N/A</p>
-        </div>
-
-        <div class="card">
-          <h3>Team Manager</h3>
-          <p>Igor Marques</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ===========================
-       Footer
-  ============================ -->
+    Article Section
+    ============================ -->
+    <section class="article-section">
+      <div class="article-container">
+        <h1 class="article-title"></h1>
+        <img class="article-image" src="" alt="" />
+        <div class="article-content"></div>
+      </div>
+    </section>
+    <!-- ===========================
+    Footer
+    ============================ -->
     <div id="footer"></div>
 
     <script>
@@ -85,6 +51,31 @@
       fetch("partials/footer.html")
         .then((res) => res.text())
         .then((html) => (document.getElementById("footer").innerHTML = html));
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      fetch("articles.json")
+        .then((res) => res.json())
+        .then((articles) => {
+          const article = articles.find((a) => a.id === id);
+
+          if (!article) {
+            document.querySelector(".article-title").innerText =
+              "Article Not Found";
+            return;
+          }
+
+          document.querySelector(".article-title").innerText = article.title;
+          document.querySelector(".article-image").src = article.image;
+
+          const contentDiv = document.querySelector(".article-content");
+          article.content.forEach((paragraph) => {
+            const p = document.createElement("p");
+            p.innerText = paragraph;
+            contentDiv.appendChild(p);
+          });
+        });
     </script>
   </body>
 </html>
