@@ -21,6 +21,11 @@
     <div id="navbar"></div>
 
     <!-- ===========================
+    Featured Article Section
+    ============================ -->
+    <section class="featured-article" id="featured-article"></section>
+
+    <!-- ===========================
     What is Futsal Section
     ============================ -->
     <section id="what-is-futsal" class="section two-column">
@@ -50,44 +55,11 @@
     </section>
 
     <!-- ===========================
-    Teams Section
+    Carousel Section
     ============================ -->
-    <section id="teams" class="section">
-      <h2>Our Teams</h2>
-
-      <div class="cards">
-        <article class="card" onclick="location.href = 'first-team.html'">
-          <h3>Men's First Team</h3>
-          <p>Competing in UK National Tier 1 futsal.</p>
-        </article>
-
-        <article class="card" onclick="location.href = 'development-team.html'">
-          <h3>Men's Development Team</h3>
-          <p>
-            Focused on player growth and skills within UK National Tier 3
-            futsal.
-          </p>
-        </article>
-
-        <article class="card" onclick="location.href = 'womens-team.html'">
-          <h3>Women's Team</h3>
-          <p>Competing in UK National Tier 1 futsal.</p>
-        </article>
-
-        <article class="card" onclick="location.href = 'youth-teams.html'">
-          <h3>Youth Squad</h3>
-          <p>Introducing young talent to the world of futsal.</p>
-        </article>
-
-        <article
-          class="card"
-          onclick="location.href = 'https://fridayleague.mavericksfutsal.club/'"
-          target="_blank"
-        >
-          <h3>Friday League</h3>
-          <p>Casual play and community engagement.</p>
-        </article>
-      </div>
+    <section class="section">
+      <h2 class="carousel-title">Latest Updates</h2>
+      <div class="carousel-track" id="carousel-track"></div>
     </section>
 
     <!-- ===========================
@@ -122,6 +94,7 @@
     Footer
     ============================ -->
     <footer id="footer"></footer>
+    <script src="js/carousel.js"></script>
     <script>
       // Load navbar
       fetch("partials/navbar.html")

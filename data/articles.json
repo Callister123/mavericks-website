@@ -1,0 +1,61 @@
+[
+  {
+    "id": "first-team-promotion",
+    "title": "First Team Promotion",
+    "image": "images/article-images/article1.jpg",
+    "summary": "Mavericks Men's First Team get promoted to the top tier of UK futsal!",
+    "content": [
+      "Milton Keynes' own MK Mavericks Futsal Club have secured promotion to the top tier of UK futsal for the first time in the club's history after defeating league favourites West London in a decisive end to a remarkable season.",
+      "The Mavericks finished the campaign on an impressive 12-game winning streak, scoring 145 goals along the way and establishing themselves as one of the most exciting teams in the division.",
+      "Head coach Flavio Damasio said: 'This promotion is a massive achievement for the club and for Milton Keynes. It reflects years of hard work, dedication, and the incredible commitment of our players, who have pushed standards every step of the way.",
+      "To now have both men's and women's teams competing at the highest level of English futsal is something we're extremely proud of. It's also a big moment for futsal's growth in the area, and we look forward to the continued support of our community - our doors are open to anyone who wants to be part of this journey.'",
+      "Originally developed in Uruguay during the 1930s, futsal is a fast-paced indoor version of football played on a smaller court with five players per side. The sport has experienced significant growth in recent years and is recognised by FIFA and UEFA as one of the world's fastest-growing indoor sports.",
+      "Known for its quick passing, technical skill and end-to-end action, futsal has become increasingly popular with both players and spectators across the UK.",
+      "The success of MK Mavericks reflects the growing strength of the sport in Milton Keynes. The club's women's team also competes at the highest level of English futsal, meaning Milton Keynes is now home to both men's and women's teams performing among the country's elite.",
+      "As the Mavericks prepare for their historic first season in the top flight, the club is welcoming new sponsors and partners to help support both its men's and women's teams. Businesses interested in partnering with the Mavericks can contact the club directly through its website.",
+      "Fans can keep an eye on the MK Mavericks website (https://www.mavericksfutsal.club/) and the National Futsal UK (https://nationalfutsal.uk/) website for fixture announcements, with ticket information expected to be released by the club ahead of each home match.",
+      "Author: Alice Auckland"
+    ],
+    "type": "featured",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "celebrating-success",
+    "title": "Celebrating Success",
+    "image": "images/article-images/article3.jpg",
+    "summary": "Reflecting on the team's achievements this season.",
+    "content": [
+      "The Mavericks have had a fantastic season, and it's time to celebrate the incredible efforts of the players and staff.",
+      "From the first match to the final game, the team has shown resilience, determination, and a never-give-up attitude.",
+      "This success is a testament to the hard work and dedication of everyone involved in the club."
+    ],
+    "type": "announcement",
+    "date": "2026-06-20"
+  },
+  {
+    "id": "big-win-first-team",
+    "title": "Big Win for the First Team",
+    "image": "images/article-images/article2.jpg",
+    "summary": "A dominant performance from the squad this weekend.",
+    "content": [
+      "The Mavericks First Team delivered a standout performance, showcasing exceptional teamwork and technical ability.",
+      "The match highlighted the squad's growth, with quick transitions, sharp passing, and relentless pressure.",
+      "This win marks an important step in the team's development and sets a strong tone for the season ahead."
+    ],
+    "type": "announcement",
+    "date": "2026-01-20"
+  },
+  {
+    "id": "youth-development",
+    "title": "Youth Development Spotlight",
+    "image": "images/article-images/article4.jpg",
+    "summary": "How our young players are growing through futsal.",
+    "content": [
+      "Our youth players continue to impress with their rapid development in futsal.",
+      "The fast-paced nature of the game encourages creativity, decision-making, and technical precision.",
+      "We are proud to see young athletes embracing the sport and growing both on and off the court."
+    ],
+    "type": "announcement",
+    "date": "2026-03-25"
+  }
+]

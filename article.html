@@ -25,7 +25,7 @@
     ============================ -->
     <section class="article-section">
       <div class="article-container">
-        <h1 class="article-title"></h1>
+        <h2 class="article-title"></h2>
         <img class="article-image" src="" alt="" />
         <div class="article-content"></div>
       </div>
@@ -59,7 +59,7 @@
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
 
-      fetch("articles.json")
+      fetch("data/articles.json")
         .then((res) => res.json())
         .then((articles) => {
           const article = articles.find((a) => a.id === id);
