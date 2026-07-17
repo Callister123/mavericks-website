@@ -3,19 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".main-nav");
 
   toggleBtn.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    toggleBtn.classList.toggle("active");
+    nav.classList.toggle("open");
+    toggleBtn.classList.toggle("open");
   });
 
-  const dropdowns = document.querySelectorAll(".dropdown");
+  // Mobile dropdowns
+  document.querySelectorAll(".dropdown").forEach(drop => {
+    const btn = drop.querySelector(".dropdown-toggle");
 
-  dropdowns.forEach(drop => {
-    const toggle = drop.querySelector(".dropdown-toggle");
-
-    toggle.addEventListener("click", (e) => {
+    btn.addEventListener("click", () => {
       if (window.innerWidth <= 768) {
-        e.preventDefault();
-        drop.classList.toggle("active");
+        drop.classList.toggle("open");
       }
     });
   });
