@@ -1,3 +1,20 @@
+:root {
+  --bg: #050816;
+  --text: #f5f5f5;
+  --card-bg: #0b1120;
+  --card-text: #f5f5f5;
+  --border: #1f2937;
+  --fixture-text: #f5f5f5;
+}
+
+body.light-mode {
+  --bg: #ffffff;
+  --text: #111827;
+  --card-bg: #da1415;
+  --border: #d1d5db;
+  --card-text: #f5f5f5;
+  --fixture-text: #f5f5f5;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,9 +27,10 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  background: #050816;
-  color: #f5f5f5;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
+  padding-top: 60px;
 }
 .responsive-image {
   width: 100%;
@@ -42,10 +60,13 @@ body {
 }
 .top-nav {
   background: #0b1120;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid #1f2937;
   padding: 0.75rem 1.5rem;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 .nav-container {
@@ -62,6 +83,38 @@ body {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
+}
+.theme-toggle {
+  position: relative;
+  width: 46px;
+  height: 24px;
+  border-radius: 999px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  left: 2px;
+  top: 2px;
+  transition: transform 0.25s ease;
+}
+body.light-mode .theme-toggle {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+body.light-mode .theme-toggle::after {
+  transform: translateX(22px);
+  background: #111827;
 }
 .logo-area {
   display: flex;
@@ -87,8 +140,17 @@ body {
   text-transform: uppercase;
 }
 .main-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1rem;
   background: #020617;
   border-bottom: 1px solid #1f2937;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .main-nav ul {
   display: flex;
@@ -125,6 +187,12 @@ body {
   font-size: 1em;
 }
 .dropdown-toggle {
+  appearance: none;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
   background: none;
   border: none;
   color: #e5e7eb;
@@ -184,14 +252,24 @@ body {
     padding: 0.5rem 1rem;
     position: relative;
   }
+  .nav-right {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
   .mobile-menu-toggle {
+    align-self: flex-start;
+    margin-right: 0.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     display: flex;
     font-size: 1.8rem;
     color: #fff;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 9999;
     align-items: center;
   }
   .mobile-menu-toggle .fa-bars {
@@ -206,6 +284,10 @@ body {
   .mobile-menu-toggle.active .fa-xmark {
     display: inline-block;
   }
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
   .main-nav {
     display: none;
     position: absolute;
@@ -215,6 +297,8 @@ body {
     background: #0b1120;
     padding: 1rem 0;
     z-index: 1000;
+    flex-direction: column;
+    align-items: stretch;
   }
   .main-nav.active {
     display: block;
@@ -333,7 +417,8 @@ body {
   animation: fadeInUp 0.6s ease forwards;
 }
 .card {
-  background: #0b1120;
+  background: var(--card-bg);
+  color: var(--card-text);
   border-radius: 0.75rem;
   padding: 1.5rem;
   border: 1px solid #1f2937;
@@ -375,6 +460,7 @@ body {
 }
 .fixtures-list li {
   background: #0b1120;
+  color: var(--fixture-text);
   border: 1px solid #1f2937;
   border-radius: 0.5rem;
   padding: 1rem;
@@ -388,7 +474,7 @@ body {
 }
 .fixture-date {
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: var(--fixture-text);
   margin-top: 4px;
 }
 .fixture-score {
