@@ -255,12 +255,10 @@ body {
 }
 
 /* Show dropdown on hover */
-@media (min-width: 769px) {
-  .main-nav ul li.dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
+.main-nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Dropdown menu items */
