@@ -127,11 +127,15 @@
       fetch("partials/navbar.html")
         .then((res) => res.text())
         .then((html) => {
-          document.getElementById("navbar").innerHTML = html;
-          // Load navbar JS AFTER navbar is injected
-          const script = document.createElement("script");
-          script.src = "js/navbar.js";
-          document.body.appendChild(script);
+          const navbarContainer = document.getElementById("navbar");
+          navbarContainer.innerHTML = html;
+
+          // Force JS to load AFTER DOM update
+          setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = "js/navbar.js";
+            document.body.appendChild(script);
+          }, 0);
         });
 
       // Load footer
