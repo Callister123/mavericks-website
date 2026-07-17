@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MK Mavericks Futsal Club</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/theme.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -16,88 +18,7 @@
     <!-- ===========================
        Header / Navigation
   ============================ -->
-    <header class="top-nav">
-      <div class="nav-container">
-        <!-- Logo -->
-        <div class="logo-area">
-          <a href="index.html" class="logo-link">
-            <img src="images/mavericks-logo.png" alt="Club Logo" class="logo" />
-            <span class="club-name">MK Mavericks Futsal Club</span>
-          </a>
-        </div>
-
-        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-          <i class="fa-solid fa-bars"></i>
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <!-- Navigation -->
-        <nav class="main-nav">
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li class="dropdown">
-              <a class="dropdown-toggle">
-                Teams <span class="chevron">▾</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="teams.html">Our Squads</a></li>
-                <li><a href="first-team.html">Men's First Team</a></li>
-                <li>
-                  <a href="development-team.html">Men's Development Team</a>
-                </li>
-                <li><a href="womens-team.html">Women's Team</a></li>
-                <li><a href="youth-teams.html">Youth Teams</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle"
-                >Community<span class="chevron">▾</span></a
-              >
-              <ul class="dropdown-menu">
-                <li>
-                  <a
-                    href="https://fridayleague.mavericksfutsal.club/"
-                    target="_blank"
-                    >Friday League
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="mavericks-handball.html">Mavericks Handball</a>
-                </li>
-              </ul>
-            </li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="join.html">Join</a></li>
-          </ul>
-        </nav>
-        <script>
-          document.addEventListener("DOMContentLoaded", () => {
-            const toggleBtn = document.querySelector(".mobile-menu-toggle");
-            const nav = document.querySelector(".main-nav");
-
-            toggleBtn.addEventListener("click", () => {
-              nav.classList.toggle("active");
-              toggleBtn.classList.toggle("active");
-            });
-
-            // Mobile dropdown toggle (supports multiple dropdowns)
-            const dropdowns = document.querySelectorAll(".dropdown");
-
-            dropdowns.forEach((drop) => {
-              const toggle = drop.querySelector(".dropdown-toggle");
-
-              toggle.addEventListener("click", (e) => {
-                if (window.innerWidth <= 768) {
-                  e.preventDefault();
-                  drop.classList.toggle("active");
-                }
-              });
-            });
-          });
-        </script>
-      </div>
-    </header>
+    <div id="navbar"></div>
 
     <!-- Hero Section -->
     <section class="section">
@@ -146,39 +67,24 @@
     <!-- ===========================
        Footer
   ============================ -->
-    <footer class="footer">
-      <p>&copy; 2026 MK Mavericks Futsal Club</p>
+    <div id="footer"></div>
 
-      <div class="social-links">
-        <a href="https://x.com/MavericksFutsal" target="_blank">
-          <img src="images/icons/x.svg" alt="Twitter" />
-        </a>
-        <span class="divider">|</span>
+    <script>
+      // Load navbar
+      fetch("partials/navbar.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("navbar").innerHTML = html;
+          // Load navbar JS AFTER navbar is injected
+          const script = document.createElement("script");
+          script.src = "/js/navbar.js";
+          document.body.appendChild(script);
+        });
 
-        <a href="https://www.instagram.com/mavericksfutsal/" target="_blank">
-          <img src="images/icons/instagram.svg" alt="Instagram" />
-        </a>
-        <span class="divider">|</span>
-
-        <a href="https://www.facebook.com/MavericksFutsal" target="_blank">
-          <img src="images/icons/facebook.svg" alt="Facebook" />
-        </a>
-        <span class="divider">|</span>
-
-        <a href="https://www.tiktok.com/@mkmavericksfutsal" target="_blank">
-          <img src="images/icons/tiktok.svg" alt="TikTok" />
-        </a>
-        <span class="divider">|</span>
-
-        <a href="https://www.youtube.com/@maverickssportsclub" target="_blank">
-          <img src="images/icons/youtube.svg" alt="YouTube" />
-        </a>
-        <span class="divider">|</span>
-
-        <a href="mailto:MKMavericksFutsal@gmail.com">
-          <img src="images/icons/gmail.svg" alt="Email" />
-        </a>
-      </div>
-    </footer>
+      // Load footer
+      fetch("partials/footer.html")
+        .then((res) => res.text())
+        .then((html) => (document.getElementById("footer").innerHTML = html));
+    </script>
   </body>
 </html>
