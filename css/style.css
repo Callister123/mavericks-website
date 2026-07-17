@@ -79,15 +79,14 @@ body {
 
   /* Hamburger container */
   .mobile-menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 22px;
     background: none;
     border: none;
     cursor: pointer;
+    font-size: 1.8rem;
+    color: #fff;
     z-index: 1001;
+    display: flex;
+    align-items: center;
   }
 
   .main-nav {
@@ -133,26 +132,22 @@ body {
     display: block;
   }
 
-  /* Hamburger bars */
-  .mobile-menu-toggle .bar {
-    height: 3px;
-    width: 24px;
-    background: #fff;
-    border-radius: 3px;
-    transition: all 0.3s ease;
+  /* Show hamburger by default */
+  .mobile-menu-toggle .fa-bars {
+    display: inline-block;
   }
 
-  /* Animate into X */
-  .mobile-menu-toggle.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+  .mobile-menu-toggle .fa-xmark {
+    display: none;
   }
 
-  .mobile-menu-toggle.active .bar:nth-child(2) {
-    opacity: 0;
+  /* When active, swap icons */
+  .mobile-menu-toggle.active .fa-bars {
+    display: none;
   }
 
-  .mobile-menu-toggle.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+  .mobile-menu-toggle.active .fa-xmark {
+    display: inline-block;
   }
 }
 

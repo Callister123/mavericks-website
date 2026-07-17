@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MK Mavericks Futsal Club</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link rel="icon" type="image/png" href="images/favicon.png" />
   </head>
 
@@ -23,9 +27,8 @@
         </div>
 
         <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-xmark"></i>
         </button>
 
         <!-- Navigation -->
@@ -75,7 +78,7 @@
 
             toggleBtn.addEventListener("click", () => {
               nav.classList.toggle("active");
-              toggleBtn.classList.toggle("active"); // animate hamburger
+              toggleBtn.classList.toggle("active");
             });
 
             // Mobile dropdown toggle
