@@ -678,8 +678,15 @@ body.light-mode .theme-toggle::after {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1rem;
-  scroll-snap-align: start;
-  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .carousel-card:hover {
   transform: translateY(-4px);
@@ -736,4 +743,15 @@ body.light-mode .theme-toggle::after {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
+}
+.article-tag {
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 4px 8px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  text-transform: capitalize;
+  opacity: 0.8;
 }

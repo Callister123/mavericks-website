@@ -37,13 +37,16 @@
     "title": "Big Win for the First Team",
     "image": "images/article-images/article2.JPG",
     "summary": "A dominant performance from the squad this weekend.",
+    "type": "match-report",
+    "date": "2026-05-03",
+    "score": "9-4",
+    "scorers": "Barabasz, K.Cutler, Perry (4), C.Tapping, R.Tappin",
+    "venue": "Solent University Sports Complex",
     "content": [
       "The Mavericks First Team delivered a standout performance, showcasing exceptional teamwork and technical ability.",
       "The match highlighted the squad's growth, with quick transitions, sharp passing, and relentless pressure.",
       "This win marks an important step in the team's development and sets a strong tone for the season ahead."
-    ],
-    "type": "announcement",
-    "date": "2026-01-20"
+    ]
   },
   {
     "id": "youth-development",
