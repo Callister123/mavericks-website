@@ -94,6 +94,7 @@ body {
 }
 .highlight-box {
   background: #111827;
+  color:#e5e7eb;
   border-left: 4px solid #da1415;
   padding: 1rem 1.25rem;
   margin: 2rem 0;
@@ -103,7 +104,7 @@ body {
 .pull-quote {
   font-size: 1.2rem;
   font-style: italic;
-  color: #e5e7eb;
+  color: var(--text);
   border-left: 3px solid #da1415;
   padding-left: 1rem;
   margin: 2rem 0;

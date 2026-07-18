@@ -516,7 +516,7 @@ body.light-mode .theme-toggle::after {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: var(--text);
 }
 .cta-button {
   display: inline-block;
