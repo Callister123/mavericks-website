@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MK Mavericks Futsal Club</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+  </head>
+
+  <body>
+    <!-- ===========================
+       Header / Navigation
+    ============================ -->
+    <div id="navbar"></div>
+
+    <!-- ===========================
+       Governance Section
+    ============================ -->
+    <section class="section">
+      <h2>Governance</h2>
+      <section class="governance-section">
+        <div>
+          <p>
+            All governance documents are available below; copies can also be
+            requested from the Child Welfare Officer via email.
+            <br />
+            We follow FA guidance on best practice in all aspects of Child
+            Safeguarding; please visit the FA's website for more information:
+            <a
+              href="https://www.thefa.com/football-rules-governance/safeguarding"
+              class="link-fa"
+              target="_blank"
+              >Click here to visit the FA's website.</a
+            >
+            <br />
+            Most importantly, if you have any questions or concerns, please
+            always feel free to approach or email any of the Club Coaches or
+            Child Welfare Officers (CWO). More details on club policies are
+            available below.
+          </p>
+        </div>
+      </section>
+    </section>
+
+   <section class="governance-grid section">
+  <div class="gov-card gov-yellow">
+    <div class="gov-image"></div>
+    <h3>Code of Conduct</h3>
+    <ul>
+      <li><a href="/pdfs/code-of-conduct-young-players.pdf" target="_blank">Young Players</a></li>
+      <li><a href="/pdfs/code-of-conduct-spectators-parents-carers.pdf" target="_blank">Spectators & Parents</a></li>
+      <li><a href="/pdfs/code-of-conduct-coaches-managers-officials.pdf" target="_blank">Team Managers & Officials</a></li>
+    </ul>
+  </div>
+
+  <div class="gov-card gov-green">
+    <div class="gov-image"></div>
+    <h3>Medical</h3>
+    <ul>
+      <li><a href="/pdfs/permission-medication.pdf" target="_blank">Administering Medication</a></li>
+      <li><a href="/pdfs/head-injury.pdf" target="_blank">Head Injury Protocol</a></li>
+      <li><a href="/pdfs/accident-report.pdf" target="_blank">Accident Reporting</a></li>
+    </ul>
+  </div>
+
+  <div class="gov-card gov-blue">
+    <div class="gov-image"></div>
+    <h3>Policies & Procedures</h3>
+    <ul>
+      <li><a href="/pdfs/safeguarding.pdf" target="_blank">Safeguarding Children</a></li>
+      <li><a href="/pdfs/equality.pdf" target="_blank">Equality</a></li>
+      <li><a href="/pdfs/anti-bullying.pdf" target="_blank">Anti-Bullying</a></li>
+      <li><a href="/pdfs/complaint-procedure.pdf" target="_blank">Complaints Process</a></li>
+    </ul>
+  </div>
+</section>
+
+    <!-- ===========================
+       Footer
+    ============================ -->
+    <footer id="footer"></footer>
+    <script>
+      // Load navbar
+      fetch("partials/navbar.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const navbarContainer = document.getElementById("navbar");
+          navbarContainer.innerHTML = html;
+
+          // Force JS to load AFTER DOM update
+          setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = "js/navbar.js";
+            document.body.appendChild(script);
+          }, 0);
+        });
+
+      // Load footer
+      fetch("partials/footer.html")
+        .then((res) => res.text())
+        .then((html) => (document.getElementById("footer").innerHTML = html));
+    </script>
+  </body>
+</html>

@@ -180,7 +180,7 @@ body.light-mode .theme-toggle::after {
 }
 /* Mobile Nav */
 @media (max-width: 768px) {
-   .nav-container {
+  .nav-container {
     padding: 0.5rem 1rem;
     position: relative;
   }
@@ -564,4 +564,82 @@ body.light-mode .theme-toggle::after {
 }
 .social-links img:hover {
   opacity: 0.7;
+}
+.link-fa {
+  display: inline-block;
+  color: #c62839;
+  text-decoration: none;
+}
+.link-fa:hover {
+  text-decoration: underline;
+}
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.gov-card {
+  background: #0b1120;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.6s ease forwards;
+}
+.gov-image {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.85);
+}
+.gov-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  color: var(--card-text);
+}
+.gov-card ul {
+  list-style: none;
+  padding: 0 1.25rem 1.25rem;
+  margin: 0;
+}
+.gov-card ul li {
+  padding: 0.4rem 0;
+  color: var(--card-text);
+  opacity: 0.85;
+  border-bottom: 1px solid #1f2937;
+}
+.gov-card ul li a {
+  color: var(--card-text);
+  text-decoration: none;
+  display: block;
+  padding: 0.4rem 0;
+  transition: color 0.2s ease;
+}
+.gov-card ul li a:hover {
+  color: #da1415;
+}
+.gov-card ul li:last-child {
+  border-bottom: none;
+}
+/* Accent colours */
+.gov-yellow h3 {
+  border-left: 6px solid #eab308;
+}
+.gov-green h3 {
+  border-left: 6px solid #01AA1B;
+}
+.gov-blue h3 {
+  border-left: 6px solid #66B9DB;
+}
+.gov-yellow .gov-image {
+  background-image: url("/images/governance-code.jpg");
+}
+.gov-green .gov-image {
+  background-image: url("/images/governance-medical.jpg");
+}
+.gov-blue .gov-image {
+  background-image: url("/images/governance-policies.jpg");
 }

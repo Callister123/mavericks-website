@@ -29,6 +29,9 @@ body {
   border-left: 4px solid #da1415;
   padding-left: 0.5rem;
 }
+.governance-section {
+  text-align: center;
+}
 /* ============================
    Two Column Layout
 ============================ */
@@ -94,7 +97,7 @@ body {
 }
 .highlight-box {
   background: #111827;
-  color:#e5e7eb;
+  color: #e5e7eb;
   border-left: 4px solid #da1415;
   padding: 1rem 1.25rem;
   margin: 2rem 0;
