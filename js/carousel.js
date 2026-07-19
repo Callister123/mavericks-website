@@ -21,7 +21,7 @@ fetch("data/articles.json")
 
         <div class="card-bottom">
           <span class="article-tag">${article.type.replace("-", " ")}</span>
-          <a href="articles/${article.id}.html" class="read-more">Read More →</a>
+          <a href="article.html?id=${article.id}" class="read-more">Read More →</a>
         </div>
         `;
       }
@@ -37,11 +37,11 @@ fetch("data/articles.json")
 
         <div class="card-bottom">
           <span class="article-tag">${article.type.replace("-", " ")}</span>
-          <a href="articles/${article.id}.html" class="read-more">Read More →</a>
+          <a href="article.html?id=${article.id}" class="read-more">Read More →</a>
         </div>
         `;
       }
-      // Fallback layout (optional)
+      // Fallback layout
       else {
         card.innerHTML = `
         <div class="card-top">
@@ -52,7 +52,7 @@ fetch("data/articles.json")
 
         <div class="card-bottom">
           <span class="article-tag">${article.type.replace("-", " ")}</span>
-          <a href="articles/${article.id}.html" class="read-more">Read More →</a>
+          <a href="article.html?id=${article.id}" class="read-more">Read More →</a>
         </div>
         `;
       }
