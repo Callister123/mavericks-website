@@ -37,7 +37,24 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      renderFixturesBatch();
+      const now = new Date();
+
+      const upcomingFixtures = allFixtures.filter(
+        (f) => new Date(f.date) >= now,
+      );
+      const pastFixtures = allFixtures.filter((f) => new Date(f.date) < now);
+
+      // Sort upcoming (soonest first)
+      upcomingFixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      // Sort past (most recent first)
+      pastFixtures.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Store globally if needed later
+      window.upcomingFixtures = upcomingFixtures;
+      window.pastFixtures = pastFixtures;
+
+      renderFixtures();
     } catch (err) {
       console.error("Error loading fixtures:", err);
       loading.textContent = "Failed to load fixtures.";
@@ -68,27 +85,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============================
   // RENDER FIXTURES IN BATCHES
   // ============================
-  function renderFixturesBatch() {
+  function renderFixtures() {
     loading.style.display = "none";
+    fixturesList.innerHTML = "";
 
-    const remaining = allFixtures.length - fixturesShown;
+    // Highlight cards
+    renderNextMatchCard();
+    renderRecentMatchCard();
 
-    if (remaining <= 0) {
-      loadMoreBtn.style.display = "none";
-      return;
-    }
+    // Remaining fixtures
+    const remainingUpcoming = upcomingFixtures.slice(1);
+    const remainingPast = pastFixtures.slice(1).reverse(); // oldest → newest
 
-    const batch = allFixtures.slice(
-      fixturesShown,
-      fixturesShown + FIXTURES_LIMIT,
-    );
+    const remainingFixtures = [...remainingUpcoming, ...remainingPast];
 
-    batch.forEach((fixture) => renderSingleFixture(fixture));
-
-    fixturesShown += batch.length;
-
-    loadMoreBtn.style.display =
-      fixturesShown < allFixtures.length ? "block" : "none";
+    remainingFixtures.forEach((fixture) => renderSingleFixture(fixture));
   }
 
   // ============================
@@ -162,10 +173,87 @@ document.addEventListener("DOMContentLoaded", () => {
     fixturesList.appendChild(li);
   }
 
-  // ============================
-  // LOAD MORE BUTTON
-  // ============================
-  loadMoreBtn.addEventListener("click", renderFixturesBatch);
+  function renderNextMatchCard() {
+    const card = document.getElementById("next-match-card");
+
+    if (!upcomingFixtures.length) {
+      card.innerHTML = "";
+      return;
+    }
+
+    const next = upcomingFixtures[0];
+
+    const dateFormatted = new Date(next.date).toLocaleDateString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    const homeTeam = next.home.toLowerCase().includes("mavericks");
+    const awayTeam = next.away.toLowerCase().includes("mavericks");
+
+    card.innerHTML = `
+    <div class="highlight-card">
+    
+      <div class="highlight-left">
+        <div class="fixture-teams">
+          <img src="images/icons/${homeTeam ? "home" : "away"}.svg" class="fixture-icon">
+          ${next.home} vs ${next.away}
+        </div>
+        <div class="fixture-date">${dateFormatted} • ${next.time} • ${next.venue}</div>
+      </div>
+      <div class="highlight-title">Upcoming Match</div>
+      <div class="highlight-score upcoming-score">—</div>
+    </div>
+  `;
+  }
+
+  function renderRecentMatchCard() {
+    const card = document.getElementById("recent-match-card");
+
+    if (!pastFixtures.length) {
+      card.innerHTML = "";
+      return;
+    }
+
+    const recent = pastFixtures[0];
+
+    const dateFormatted = new Date(recent.date).toLocaleDateString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    const homeTeam = recent.home.toLowerCase().includes("mavericks");
+    const awayTeam = recent.away.toLowerCase().includes("mavericks");
+
+    const scoreParts = recent.score.split("-");
+    let mScore = homeTeam ? scoreParts[0] : scoreParts[1];
+    let oScore = homeTeam ? scoreParts[1] : scoreParts[0];
+
+    let scoreClass = "";
+    if (mScore > oScore) scoreClass = "score-win";
+    else if (mScore < oScore) scoreClass = "score-loss";
+    else scoreClass = "score-draw";
+
+    card.innerHTML = `
+    <div class="highlight-card">
+      <div class="highlight-left">
+        <div class="fixture-teams">
+          <img src="images/icons/${homeTeam ? "home" : "away"}.svg" class="fixture-icon">
+          ${recent.home} vs ${recent.away}
+        </div>
+        <div class="fixture-date">${dateFormatted} • ${recent.time} • ${recent.venue}</div>
+      </div>
+      <div class="highlight-title">Most Recent Result</div>
+      <div class="highlight-score ${scoreClass}">
+        ${recent.score}
+      </div>
+    </div>
+  `;
+  }
 
   // ============================
   // FILTERING
