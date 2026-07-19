@@ -1,111 +1,180 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ============================
+  // DOM ELEMENTS
+  // ============================
   const fixturesList = document.getElementById("fixtures-list");
   const loading = document.getElementById("fixtures-loading");
   const empty = document.getElementById("fixtures-empty");
+  const loadMoreBtn = document.getElementById("fixtures-load-more");
 
-  const SHEET_URL =
-    "https://docs.google.com/spreadsheets/d/1th9Gu0HYfY_upaA1MMNW8VyWibYff_Oxf_vUAGzJhY8/gviz/tq?tqx=out:json";
+  // ============================
+  // CONFIG
+  // ============================
+  const CSV_URL =
+    "https://docs.google.com/spreadsheets/d/1th9Gu0HYfY_upaA1MMNW8VyWibYff_Oxf_vUAGzJhY8/export?format=csv";
 
+  const FIXTURES_LIMIT = 5;
+
+  // ============================
+  // STATE
+  // ============================
+  let allFixtures = [];
+  let fixturesShown = 0;
+
+  // ============================
+  // LOAD CSV FIXTURES
+  // ============================
   async function loadFixtures() {
     try {
-      const res = await fetch(SHEET_URL);
-      const text = await res.text();
+      const res = await fetch(CSV_URL);
+      const csvText = await res.text();
 
-      // Google Sheets returns JS, not pure JSON — we extract the JSON part
-      const json = JSON.parse(
-        text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1),
-      );
+      allFixtures = parseCSV(csvText);
 
-      const rows = json.table.rows;
+      if (allFixtures.length === 0) {
+        loading.style.display = "none";
+        empty.style.display = "block";
+        return;
+      }
 
-      const fixtures = rows.map((row) => {
-        return {
-          team: row.c[0]?.v || "",
-          date: row.c[1]?.v || "",
-          time: row.c[2]?.v || "",
-          home: row.c[3]?.v || "",
-          away: row.c[4]?.v || "",
-          score: row.c[5]?.v || null,
-          venue: row.c[6]?.v || "",
-        };
-      });
-
-      renderFixtures(fixtures);
+      renderFixturesBatch();
     } catch (err) {
       console.error("Error loading fixtures:", err);
       loading.textContent = "Failed to load fixtures.";
     }
   }
 
-  function renderFixtures(fixtures) {
-    loading.style.display = "none";
+  // ============================
+  // CSV → FIXTURE OBJECTS
+  // ============================
+  function parseCSV(csv) {
+    const lines = csv.trim().split("\n");
 
-    if (fixtures.length === 0) {
-      empty.style.display = "block";
-      return;
-    }
+    return lines.slice(1).map((line) => {
+      const cols = line.split(",");
 
-    fixtures.forEach((fixture) => {
-      const li = document.createElement("li");
-
-      const dateFormatted = new Date(fixture.date).toLocaleDateString("en-GB", {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      });
-
-      const isHome = fixture.home === "Mavericks";
-
-      const hasScore = fixture.score !== null && fixture.score !== "";
-      const scoreParts = hasScore ? fixture.score.split("-") : ["", ""];
-
-      const mavericksScore = hasScore
-        ? isHome
-          ? scoreParts[0]
-          : scoreParts[1]
-        : "";
-      const opponentScore = hasScore
-        ? isHome
-          ? scoreParts[1]
-          : scoreParts[0]
-        : "";
-
-      let scoreClass = "";
-      if (hasScore) {
-        if (mavericksScore > opponentScore) scoreClass = "score-win";
-        else if (mavericksScore < opponentScore) scoreClass = "score-loss";
-        else scoreClass = "score-draw";
-      }
-
-      li.dataset.team = fixture.team.toLowerCase();
-      li.dataset.score = hasScore ? fixture.score : "";
-
-      li.innerHTML = `
-        <div>
-          <div class="fixture-teams">
-            <img src="images/icons/${isHome ? "home" : "away"}.svg" class="fixture-icon">
-            ${fixture.home} vs ${fixture.away}
-          </div>
-          <div class="fixture-date">${dateFormatted} • ${fixture.time} • ${fixture.venue}</div>
-        </div>
-
-        <div class="fixture-score ${scoreClass}">
-          ${hasScore ? fixture.score : "—"}
-        </div>
-      `;
-
-      fixturesList.appendChild(li);
+      return {
+        team: cols[0].trim().toLowerCase(),
+        date: cols[1].trim(),
+        time: cols[2].trim(),
+        home: cols[3].trim(),
+        away: cols[4].trim(),
+        score: cols[5].trim() || null,
+        venue: cols[6].trim(),
+      };
     });
   }
 
-  // Filtering logic
+  // ============================
+  // RENDER FIXTURES IN BATCHES
+  // ============================
+  function renderFixturesBatch() {
+    loading.style.display = "none";
+
+    const remaining = allFixtures.length - fixturesShown;
+
+    if (remaining <= 0) {
+      loadMoreBtn.style.display = "none";
+      return;
+    }
+
+    const batch = allFixtures.slice(
+      fixturesShown,
+      fixturesShown + FIXTURES_LIMIT
+    );
+
+    batch.forEach((fixture) => renderSingleFixture(fixture));
+
+    fixturesShown += batch.length;
+
+    loadMoreBtn.style.display =
+      fixturesShown < allFixtures.length ? "block" : "none";
+  }
+
+  // ============================
+  // RENDER A SINGLE FIXTURE
+  // ============================
+  function renderSingleFixture(fixture) {
+    const li = document.createElement("li");
+
+    // Clean team names (handles weird Google Sheets spaces)
+    function clean(str) {
+      return str
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .replace(/\u00A0/g, " ")
+        .trim();
+    }
+
+    const homeTeam = clean(fixture.home);
+    const awayTeam = clean(fixture.away);
+
+    const isHome = homeTeam.includes("mavericks");
+    const isAway = awayTeam.includes("mavericks");
+
+    const hasScore = fixture.score !== null && fixture.score !== "";
+    const scoreParts = hasScore ? fixture.score.split("-") : ["", ""];
+
+    let mavericksScore = "";
+    let opponentScore = "";
+
+    if (hasScore) {
+      if (isHome) {
+        mavericksScore = Number(scoreParts[0]);
+        opponentScore = Number(scoreParts[1]);
+      } else if (isAway) {
+        mavericksScore = Number(scoreParts[1]);
+        opponentScore = Number(scoreParts[0]);
+      }
+    }
+
+    let scoreClass = "";
+    if (hasScore) {
+      if (mavericksScore > opponentScore) scoreClass = "score-win";
+      else if (mavericksScore < opponentScore) scoreClass = "score-loss";
+      else scoreClass = "score-draw";
+    }
+
+    const dateFormatted = new Date(fixture.date).toLocaleDateString("en-GB", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    li.dataset.team = fixture.team;
+    li.dataset.score = hasScore ? fixture.score : "";
+
+    li.innerHTML = `
+      <div>
+        <div class="fixture-teams">
+          <img src="images/icons/${isHome ? "home" : "away"}.svg" class="fixture-icon">
+          ${fixture.home} vs ${fixture.away}
+        </div>
+        <div class="fixture-date">${dateFormatted} • ${fixture.time} • ${fixture.venue}</div>
+      </div>
+
+      <div class="fixture-score ${scoreClass}">
+        ${hasScore ? fixture.score : "—"}
+      </div>
+    `;
+
+    fixturesList.appendChild(li);
+  }
+
+  // ============================
+  // LOAD MORE BUTTON
+  // ============================
+  loadMoreBtn.addEventListener("click", renderFixturesBatch);
+
+  // ============================
+  // FILTERING
+  // ============================
   const filterButtons = document.querySelectorAll(".fixtures-filters button");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
-      applyFilter(filter);
+      applyFilter(button.dataset.filter);
     });
   });
 
@@ -131,5 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.display = show ? "flex" : "none";
     });
   }
+
+  // ============================
+  // START
+  // ============================
   loadFixtures();
 });

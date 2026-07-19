@@ -629,10 +629,10 @@ body.light-mode .theme-toggle::after {
   border-left: 6px solid #eab308;
 }
 .gov-green h3 {
-  border-left: 6px solid #01AA1B;
+  border-left: 6px solid #01aa1b;
 }
 .gov-blue h3 {
-  border-left: 6px solid #66B9DB;
+  border-left: 6px solid #66b9db;
 }
 .gov-yellow .gov-image {
   background-image: url("/images/governance-code.jpg");
@@ -642,4 +642,30 @@ body.light-mode .theme-toggle::after {
 }
 .gov-blue .gov-image {
   background-image: url("/images/governance-policies.jpg");
+}
+.fixtures-load-more {
+  margin: 2rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background: #da1415;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  transition:
+    background 0.25s ease,
+    transform 0.15s ease;
+}
+.fixtures-load-more:hover {
+  background: #b3121a;
+  transform: translateY(-2px);
+}
+.fixtures-load-more:active {
+  transform: translateY(0);
+}
+.fixtures-load-more:focus-visible {
+  outline: 2px solid #ffffff55;
+  outline-offset: 3px;
 }
