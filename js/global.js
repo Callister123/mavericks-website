@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const batch = allFixtures.slice(
       fixturesShown,
-      fixturesShown + FIXTURES_LIMIT
+      fixturesShown + FIXTURES_LIMIT,
     );
 
     batch.forEach((fixture) => renderSingleFixture(fixture));
