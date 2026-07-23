@@ -1,4 +1,4 @@
-fetch("/data/articles.json")
+fetch("data/articles.json")
   .then((res) => res.json())
   .then((articles) => {
     const track = document.getElementById("carousel-track");
@@ -61,7 +61,7 @@ fetch("/data/articles.json")
     });
   });
 
-fetch("/data/articles.json")
+fetch("data/articles.json")
   .then((res) => res.json())
   .then((articles) => {
     const featured = articles.find((a) => a.type === "featured");
