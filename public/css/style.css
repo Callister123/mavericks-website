@@ -642,13 +642,14 @@ body.light-mode .theme-toggle::after {
   border-left: 6px solid #66b9db;
 }
 .gov-yellow .gov-image {
-  background-image: url("/images/governance-code.jpg");
+  background-image: url("/public/images/governance-code.jpg");
 }
 .gov-green .gov-image {
-  background-image: url("/images/governance-medical.jpg");
+  background-image: url("/public/images/governance-medical.jpg");
+;
 }
 .gov-blue .gov-image {
-  background-image: url("/images/governance-policies.jpg");
+  background-image: url("/public/images/governance-policies.jpg");
 }
 .next-match-card,
 .recent-match-card {
