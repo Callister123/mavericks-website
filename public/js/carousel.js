@@ -59,11 +59,6 @@ fetch("data/articles.json")
 
       track.appendChild(card);
     });
-  });
-
-fetch("data/articles.json")
-  .then((res) => res.json())
-  .then((articles) => {
     const featured = articles.find((a) => a.type === "featured");
     const container = document.getElementById("featured-article");
 
