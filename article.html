@@ -3,7 +3,7 @@
   <head>
     <meta
       name="description"
-      content="Milton Keynes futsal club offering community programs, player development, team fixtures, and club activities. Explore updates, join the team, and be part of our growing community."
+      content="Read the latest Mavericks Futsal Club articles, match reports, news updates and community stories. Explore featured content and in-depth coverage across all teams."
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,18 +42,18 @@
     <script>
       // Load navbar
       fetch("partials/navbar.html")
-  .then(res => res.text())
-  .then(html => {
-    const navbarContainer = document.getElementById("navbar");
-    navbarContainer.innerHTML = html;
+        .then((res) => res.text())
+        .then((html) => {
+          const navbarContainer = document.getElementById("navbar");
+          navbarContainer.innerHTML = html;
 
-    // Force JS to load AFTER DOM update
-    setTimeout(() => {
-      const script = document.createElement("script");
-      script.src = "js/navbar.js";
-      document.body.appendChild(script);
-    }, 0);
-  });
+          // Force JS to load AFTER DOM update
+          setTimeout(() => {
+            const script = document.createElement("script");
+            script.src = "js/navbar.js";
+            document.body.appendChild(script);
+          }, 0);
+        });
 
       // Load footer
       fetch("partials/footer.html")
