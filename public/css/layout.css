@@ -26,7 +26,7 @@ body {
 .section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  border-left: 4px solid #da1415;
+  border-left: 4px solid var(--button);
   padding-left: 0.5rem;
 }
 .governance-section {
@@ -83,7 +83,7 @@ body {
 .about-block h3 {
   font-size: 1.3rem;
   margin-bottom: 0.75rem;
-  color: #da1415;
+  color: var(--button);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -98,7 +98,7 @@ body {
 .highlight-box {
   background: #111827;
   color: #e5e7eb;
-  border-left: 4px solid #da1415;
+  border-left: 4px solid var(--button);
   padding: 1rem 1.25rem;
   margin: 2rem 0;
   font-weight: 600;
@@ -108,7 +108,7 @@ body {
   font-size: 1.2rem;
   font-style: italic;
   color: var(--text);
-  border-left: 3px solid #da1415;
+  border-left: 3px solid var(--button);
   padding-left: 1rem;
   margin: 2rem 0;
 }

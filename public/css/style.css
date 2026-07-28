@@ -112,11 +112,11 @@ body.light-mode .theme-toggle::after {
   transition: 0.2s;
 }
 .main-nav a:hover {
-  color: #da1415;
-  border-bottom: 2px solid #da1415;
+  color: var(--button);
+  border-bottom: 2px solid var(--button);
 }
 .main-nav a.active {
-  color: #da1415;
+  color: var(--button);
   font-weight: 700;
 }
 /* Dropdown */
@@ -139,8 +139,12 @@ body.light-mode .theme-toggle::after {
   cursor: pointer;
 }
 .dropdown-toggle:hover {
-  color: #da1415;
-  border-bottom-color: #da1415;
+  color: var(--button);
+  border-bottom-color: var(--button);
+}
+nav, nav a, nav button {
+  font-family: inherit;
+  font-weight: inherit;
 }
 @media (min-width: 769px) {
   .main-nav ul li.dropdown:hover .chevron {
@@ -349,7 +353,7 @@ body.light-mode .theme-toggle::after {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background: #da1415;
+  background: var(--button);
   color: white;
   border-radius: 6px;
   text-decoration: none;
@@ -480,7 +484,7 @@ body.light-mode .theme-toggle::after {
 }
 .contact-form label {
   font-weight: 700;
-  color: #e63946;
+  color: var(--button);
 }
 .contact-form input,
 .contact-form textarea {
@@ -489,7 +493,7 @@ body.light-mode .theme-toggle::after {
   border-radius: 6px;
 }
 .contact-form button {
-  background: #e63946;
+  background: var(--button);
   color: #fff;
   padding: 12px;
   border: none;
@@ -498,7 +502,7 @@ body.light-mode .theme-toggle::after {
   cursor: pointer;
 }
 .contact-form button:hover {
-  background: #c62839;
+  background: var(--button);
 }
 /* ============================
    ARTICLE PAGE
@@ -527,7 +531,7 @@ body.light-mode .theme-toggle::after {
 }
 .cta-button {
   display: inline-block;
-  background: #da1415;
+  background: var(--button);
   color: #fff;
   padding: 0.75rem 2rem;
   font-size: 1.1rem;
@@ -626,7 +630,7 @@ body.light-mode .theme-toggle::after {
   transition: color 0.2s ease;
 }
 .gov-card ul li a:hover {
-  color: #da1415;
+  color: var(--button);
 }
 .gov-card ul li:last-child {
   border-bottom: none;
@@ -654,7 +658,7 @@ body.light-mode .theme-toggle::after {
 .next-match-card,
 .recent-match-card {
   background: var(--card-bg);
-  border: 2px solid #da1415;
+  border: 2px solid var(--button);
   padding: 1.25rem 1.5rem;
   border-radius: 10px;
   margin-bottom: 1.5rem;
@@ -694,7 +698,7 @@ body.light-mode .theme-toggle::after {
 }
 .highlight-card {
   background: var(--card-bg);
-  border: 2px solid #da1415;
+  border: 2px solid var(--button);
   padding: 1.25rem 1.5rem;
   border-radius: 10px;
   margin-bottom: 1.5rem;
