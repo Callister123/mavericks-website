@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core Pages -->
+  <url><loc>https://mavericksfutsal.club/</loc></url>
+  <url><loc>https://mavericksfutsal.club/about</loc></url>
+  <url><loc>https://mavericksfutsal.club/governance</loc></url>
+  <url><loc>https://mavericksfutsal.club/join</loc></url>
+
+  <!-- Teams -->
+  <url><loc>https://mavericksfutsal.club/teams</loc></url>
+  <url><loc>https://mavericksfutsal.club/first-team</loc></url>
+  <url><loc>https://mavericksfutsal.club/development-team</loc></url>
+  <url><loc>https://mavericksfutsal.club/womens-team</loc></url>
+  <url><loc>https://mavericksfutsal.club/youth-teams</loc></url>
+
+  <!-- Community -->
+  <url><loc>https://mavericksfutsal.club/mavericks-handball</loc></url>
+
+  <!-- Articles (single dynamic endpoint) -->
+  <url><loc>https://mavericksfutsal.club/article</loc></url>
+
+</urlset>
