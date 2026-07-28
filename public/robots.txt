@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block internal system paths (if they exist)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow article endpoint
+Allow: /article
+
+# Sitemap location
+Sitemap: https://mavericksfutsal.club/sitemap.xml
