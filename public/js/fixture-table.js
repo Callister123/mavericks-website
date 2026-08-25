@@ -93,9 +93,9 @@ function renderFixturesTable(fixtures) {
     <div class="fixture-row header">
       <div>Date</div>
       <div>Opponent</div>
-      <div>Score</div>
       <div>Time</div>
       <div>Venue</div>
+      <div>Score</div>
     </div>
   `;
 
