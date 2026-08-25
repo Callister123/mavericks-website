@@ -3,10 +3,11 @@
 // ============================
 const CSV_URL =
   "https://docs.google.com/spreadsheets/d/1th9Gu0HYfY_upaA1MMNW8VyWibYff_Oxf_vUAGzJhY8/export?format=csv";
-
 let allFixtures = [];
 let upcomingFixtures = [];
 let pastFixtures = [];
+let currentPage = 1;
+const FIXTURES_PER_PAGE = 10;
 
 // ============================
 // PARSE CSV → FIXTURE OBJECTS
@@ -84,6 +85,9 @@ function renderFixturesTable(fixtures) {
   const container = document.querySelector(".fixtures-table");
   if (!container) return;
 
+  // Apply pagination
+  const paginated = paginate(fixtures);
+
   // Header row
   container.innerHTML = `
     <div class="fixture-row header">
@@ -95,13 +99,11 @@ function renderFixturesTable(fixtures) {
     </div>
   `;
 
-  fixtures.forEach((f) => {
-    // Determine opponent
+  paginated.forEach((f) => {
     const opponent = f.home.toLowerCase().includes("mavericks")
       ? f.away
       : f.home;
 
-    // Determine type (official/friendly)
     const type = f.type === "friendly" ? "friendly" : "official";
 
     const row = document.createElement("div");
@@ -110,13 +112,31 @@ function renderFixturesTable(fixtures) {
     row.innerHTML = `
       <div>${formatDate(f.date)}</div>
       <div>${opponent}</div>
-      <div>${f.score || "TBC"}</div>
       <div>${f.time || "TBC"}</div>
       <div>${f.venue || "TBC"}</div>
+      <div>${f.score || "TBC"}</div>
     `;
 
     container.appendChild(row);
   });
+
+  updatePaginationControls(fixtures.length);
+}
+
+function paginate(fixtures) {
+  const start = (currentPage - 1) * FIXTURES_PER_PAGE;
+  const end = start + FIXTURES_PER_PAGE;
+  return fixtures.slice(start, end);
+}
+
+function updatePaginationControls(totalFixtures) {
+  const totalPages = Math.ceil(totalFixtures / FIXTURES_PER_PAGE);
+
+  document.getElementById("page-info").textContent =
+    `Page ${currentPage} of ${totalPages}`;
+
+  document.getElementById("prev-page").disabled = currentPage === 1;
+  document.getElementById("next-page").disabled = currentPage === totalPages;
 }
 
 function applyFilters() {
@@ -139,8 +159,22 @@ function applyFilters() {
 
   renderFixturesTable(filtered);
 }
+document.getElementById("prev-page").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    applyFilters();
+  }
+});
+
+document.getElementById("next-page").addEventListener("click", () => {
+  currentPage++;
+  applyFilters();
+});
+
 document.addEventListener("click", (e) => {
   if (!e.target.matches(".fixtures-filters button")) return;
+
+    currentPage = 1;
 
   const isTeamButton = e.target.dataset.team !== undefined;
   const isTypeButton = e.target.dataset.type !== undefined;
