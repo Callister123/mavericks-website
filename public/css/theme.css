@@ -2,14 +2,15 @@
    Theme Variables
 ============================ */
 @import url('https://fonts.googleapis.com/css2?family=Allura&family=Archivo+Black&family=Khand:wght@300;400;500;600;700&display=swap');
-body.light-mode {
+body.dark-mode {
   --bg: #050816;
   --text: #ffffff;
-  --card-bg: #0b1120;
+  --card-bg: #da1415;
   --card-text: #ffffff;
   --border: #1f2937;
   --fixture-text: #ffffff;
-  --button: #da1415;  
+  --button: #da1415;
+  --accent: #da1415;
 }
 :root {
   --bg: #ffffff;
@@ -19,6 +20,7 @@ body.light-mode {
   --card-text: #ffffff;
   --fixture-text: #ffffff;
   --button: #da1415;  
+  --accent: #da1415;
 }
 /* ============================
    Typography + Base

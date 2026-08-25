@@ -19,7 +19,7 @@ document.querySelectorAll(".dropdown").forEach(drop => {
 const themeBtn = document.querySelector(".theme-toggle");
 
 function applyTheme(mode) {
-  document.body.classList.toggle("light-mode", mode === "light");
+  document.body.classList.toggle("dark-mode", mode === "dark");
   localStorage.setItem("theme", mode);
 }
 

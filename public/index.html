@@ -73,73 +73,51 @@
     <!-- ===========================
     Fixtures Section
     ============================ -->
-    <section id="fixtures" class="section">
+    <section class="section">
       <h2>Latest Fixtures</h2>
+      <div class="fixtures-filters-row">
+        <div class="fixtures-filters">
+          <button data-team="all">All Teams</button>
+          <button data-team="development">Development</button>
+          <button data-team="first">First Team</button>
+          <button data-team="women">Women's Team</button>
 
-      <div class="fixtures-filters">
-        <button data-filter="all">All</button>
-        <button data-filter="upcoming">Upcoming</button>
-        <button data-filter="completed">Completed</button>
-        <button data-filter="first">First Team</button>
-        <button data-filter="development">Development Squad</button>
-        <button data-filter="women">Women's Team</button>
+          <button data-type="all">All Types</button>
+          <button data-type="friendly">Friendly</button>
+          <button data-type="official">Official</button>
+        </div>
+        <div class="fixtures-key">
+          <span class="key-item friendly-key"></span> Friendly
+          <span class="key-item official-key"></span> Official
+        </div>
       </div>
-
-      <div id="fixtures-loading" class="fixtures-loading">
-        Loading fixtures...
-      </div>
-
-      <div id="next-match-card"></div>
-      <div id="recent-match-card"></div>
-      <ul id="fixtures-list" class="fixtures-list"></ul>
-
-      <div id="fixtures-empty" class="fixtures-empty" style="display: none">
-        No fixtures available at the moment.
-      </div>
-
-      <script src="js/global.js"></script>
+      <section class="fixtures-table"></section>
+      <script src="js/fixture-table.js"></script>
     </section>
 
-    <div class="sponsor-bar">
-      <div class="sponsor-carousel">
-        <div class="sponsor-track">
-          <!-- Sponsor Card -->
-          <div class="sponsor-group">
-            <div class="sponsor-card">
-              <img src="images\logos\bwc-sponsor.png" alt="BWC sponsor" />
-            </div>
-
-            <div class="sponsor-card">
-              <img
-                src="images\logos\hoc-Logo.jpg"
-                alt="House of Chicken Sponsor"
-              />
-            </div>
-
-            <div class="sponsor-card">
-              <img src="images\logos\equans-logo.jpg" alt="Equans Sponsor" />
-            </div>
+    <section>
+      <div class="carousel">
+        <!-- <div class="sponsors-label">
+          <span>Our Sponsors</span>
+        </div> -->
+        <div class="group">
+          <div class="sponsor-card">
+            <img src="images\logos\bwc-sponsor.png" alt="BWC Sponsor" />
           </div>
-          <!-- Duplicate for seamless loop -->
-          <div class="sponsor-group">
-            <div class="sponsor-card">
-              <img src="images\logos\bwc-sponsor.png" alt="BWC Sponsor" />
-            </div>
 
-            <div class="sponsor-card">
-              <img
-                src="images\logos\hoc-Logo.jpg"
-                alt="House of Chicken Sponsor"
-              />
-            </div>
+          <div class="sponsor-card">
+            <img
+              src="images\logos\hoc-Logo.jpg"
+              alt="House of Chicken Sponsor"
+            />
+          </div>
 
-            <div class="sponsor-card">
-              <img src="images\logos\equans-logo.jpg" alt="Equans Sponsor" />
-            </div>
+          <div class="sponsor-card">
+            <img src="images\logos\equans-logo.jpg" alt="Equans Sponsor" />
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- ===========================
     Footer
