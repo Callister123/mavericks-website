@@ -55,11 +55,13 @@
 
     <section class="governance-grid section">
       <div class="gov-card gov-yellow">
-        <div class="gov-image"></div>
+        <div class="gov-image">
+          <img src="images/governance-code.jpg" alt="Code of Conduct" />
+        </div>
         <h3>Code of Conduct</h3>
         <ul>
           <li>
-            <a href="pdfs\code-of-conduct-young-players.pdf" target="_blank"
+            <a href="pdfs/code-of-conduct-young-players.pdf" target="_blank"
               >Young Players</a
             >
           </li>
@@ -81,7 +83,9 @@
       </div>
 
       <div class="gov-card gov-green">
-        <div class="gov-image"></div>
+        <div class="gov-image">
+          <img src="images/governance-medical.jpg" alt="Medical" />
+        </div>
         <h3>Medical</h3>
         <ul>
           <li>
@@ -103,7 +107,12 @@
       </div>
 
       <div class="gov-card gov-blue">
-        <div class="gov-image"></div>
+        <div class="gov-image">
+          <img
+            src="images/governance-policies.jpg"
+            alt="Policies & Procedures"
+          />
+        </div>
         <h3>Policies & Procedures</h3>
         <ul>
           <li>
@@ -128,26 +137,6 @@
        Footer
     ============================ -->
     <footer id="footer"></footer>
-    <script>
-      // Load navbar
-      fetch("partials/navbar.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const navbarContainer = document.getElementById("navbar");
-          navbarContainer.innerHTML = html;
-
-          // Force JS to load AFTER DOM update
-          setTimeout(() => {
-            const script = document.createElement("script");
-            script.src = "js/navbar.js";
-            document.body.appendChild(script);
-          }, 0);
-        });
-
-      // Load footer
-      fetch("partials/footer.html")
-        .then((res) => res.text())
-        .then((html) => (document.getElementById("footer").innerHTML = html));
-    </script>
+    <script src="js/global.js"></script>
   </body>
 </html>

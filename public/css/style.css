@@ -693,9 +693,14 @@ body:not(.dark-mode) .fixture-row.official:hover {
 }
 .gov-image {
   height: 140px;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
   filter: brightness(0.85);
+}
+.gov-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .gov-card h3 {
   font-size: 1.4rem;
@@ -736,15 +741,6 @@ body:not(.dark-mode) .fixture-row.official:hover {
 }
 .gov-blue h3 {
   border-left: 6px solid #66b9db;
-}
-.gov-yellow .gov-image {
-  background-image: url("/public/images/governance-code.jpg");
-}
-.gov-green .gov-image {
-  background-image: url("/public/images/governance-medical.jpg");
-}
-.gov-blue .gov-image {
-  background-image: url("/public/images/governance-policies.jpg");
 }
 .next-match-card,
 .recent-match-card {
@@ -930,4 +926,28 @@ body:not(.dark-mode) .fixture-row.official:hover {
 }
 .join-email:hover {
   text-decoration: underline;
+}
+.sport-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.sport-card:hover {
+  transform: translateY(-4px);
+}
+.sport-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.sport-link {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-weight: 700;
+}
+.sport-cards {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }

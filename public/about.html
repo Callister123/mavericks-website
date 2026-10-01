@@ -28,90 +28,90 @@
     About Section
     ============================ -->
     <section class="section">
-        <h2 class="section-title">About the Club</h2>
+      <h2 class="section-title">About the Club</h2>
 
-        <!-- WHO WE ARE -->
-        <div class="about-block">
-          <h3><i class="fa-solid fa-people-group"></i> Who We Are</h3>
+      <!-- WHO WE ARE -->
+      <div class="about-block">
+        <h3><i class="fa-solid fa-people-group"></i> Who We Are</h3>
+        <p>
+          Mavericks Futsal Club is a community sports organisation focused on
+          supporting long-term player development through continuous coaching
+          and inclusion in the game of Futsal. Our commitment is to create a
+          safe, positive environment in which all players can learn, play and
+          enjoy the game.
+        </p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- WHAT IS FUTSAL -->
+      <section id="what-is-futsal" class="section two-column">
+        <div class="column-left">
+          <img
+            src="images/futsal-freekick.JPG"
+            alt="Futsal freekick"
+            class="responsive-image"
+          />
+        </div>
+
+        <div class="column-right">
           <p>
-            Mavericks Futsal Club is a community sports organisation focused on
-            supporting long-term player development through continuous coaching
-            and inclusion in the game of Futsal. Our commitment is to create a
-            safe, positive environment in which all players can learn, play and
-            enjoy the game.
+            With the endorsement of Berks & Bucks FA, we're proud to introduce a
+            new and exciting sport to the youth of Milton Keynes, Bucks, and
+            Beds. Futsal is a fast-paced 5v5 game originating from South America
+            and played worldwide. It is the only small-sided format officially
+            recognised by UEFA and FIFA.
           </p>
         </div>
+      </section>
 
-        <hr class="section-divider" />
+      <hr class="section-divider" />
 
-        <!-- WHAT IS FUTSAL -->
-        <section id="what-is-futsal" class="section two-column">
-          <div class="column-left">
-            <img
-              src="images/futsal-freekick.JPG"
-              alt="Futsal freekick"
-              class="responsive-image"
-            />
-          </div>
+      <!-- DEVELOPMENT BENEFITS -->
+      <div class="about-block">
+        <h3>Why Futsal Matters</h3>
+        <p>
+          The nature of futsal places a strong emphasis on various skills and
+          attributes that are crucial for player development. The smaller
+          playing area, faster pace, and increased ball touches provide players
+          with the skills below:
+        </p>
 
-          <div class="column-right">
-            <p>
-              With the endorsement of Berks & Bucks FA, we're proud to introduce
-              a new and exciting sport to the youth of Milton Keynes, Bucks, and
-              Beds. Futsal is a fast-paced 5v5 game originating from South
-              America and played worldwide. It is the only small-sided format
-              officially recognised by UEFA and FIFA.
-            </p>
-          </div>
-        </section>
+        <ul class="benefits-list">
+          <li>Technical ability</li>
+          <li>Quick decision-making</li>
+          <li>Teamwork under pressure</li>
+          <li>Spatial awareness</li>
+          <li>Communication</li>
+        </ul>
+      </div>
 
-        <hr class="section-divider" />
+      <blockquote class="pull-quote">
+        Futsal is recognised by UEFA and FIFA as the official small-sided format
+        of football.
+      </blockquote>
 
-        <!-- DEVELOPMENT BENEFITS -->
-        <div class="about-block">
-          <h3>Why Futsal Matters</h3>
-          <p>
-            The nature of futsal places a strong emphasis on various skills and
-            attributes that are crucial for player development. The smaller
-            playing area, faster pace, and increased ball touches provide
-            players with the skills below:
-          </p>
+      <hr class="section-divider" />
 
-          <ul class="benefits-list">
-            <li>Technical ability</li>
-            <li>Quick decision-making</li>
-            <li>Teamwork under pressure</li>
-            <li>Spatial awareness</li>
-            <li>Communication</li>
-          </ul>
-        </div>
+      <!-- FUTSAL & PLAYER GROWTH -->
+      <div class="about-block">
+        <h3>Developing Creative Players</h3>
+        <p>
+          Many of the world's top footballers played Futsal in their youth and
+          credit it with supporting their development. The game puts players in
+          situations where they have to adapt and be creative with solutions to
+          escape from tight areas, encouraging them to think quick and move
+          quick.
+        </p>
+      </div>
 
-        <blockquote class="pull-quote">
-          Futsal is recognised by UEFA and FIFA as the official small-sided
-          format of football.
-        </blockquote>
-
-        <hr class="section-divider" />
-
-        <!-- FUTSAL & PLAYER GROWTH -->
-        <div class="about-block">
-          <h3>Developing Creative Players</h3>
-          <p>
-            Many of the world's top footballers played Futsal in their youth and
-            credit it with supporting their development. The game puts players
-            in situations where they have to adapt and be creative with
-            solutions to escape from tight areas, encouraging them to think
-            quick and move quick.
-          </p>
-        </div>
-
-        <div class="highlight-box">
-          Futsal is an exciting game and a fantastic source of physical activity
-          and social interaction for young people.
-        </div>
-        <div class="about-cta">
-          <a href="join.html" class="cta-button">Join Us</a>
-        </div>
+      <div class="highlight-box">
+        Futsal is an exciting game and a fantastic source of physical activity
+        and social interaction for young people.
+      </div>
+      <div class="about-cta">
+        <a href="join.html" class="cta-button">Join Us</a>
+      </div>
 
       <div>
         <h2>Our DNA</h2>
@@ -143,32 +143,7 @@
         </article>
       </div>
     </section>
-
-    <!-- ===========================
-    Footer
-    ============================ -->
-    <div id="footer"></div>
-
-    <script>
-      // Load navbar
-      fetch("partials/navbar.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const navbarContainer = document.getElementById("navbar");
-          navbarContainer.innerHTML = html;
-
-          // Force JS to load AFTER DOM update
-          setTimeout(() => {
-            const script = document.createElement("script");
-            script.src = "js/navbar.js";
-            document.body.appendChild(script);
-          }, 0);
-        });
-
-      // Load footer
-      fetch("partials/footer.html")
-        .then((res) => res.text())
-        .then((html) => (document.getElementById("footer").innerHTML = html));
-    </script>
+    <footer id="footer"></footer>
+    <script src="js/global.js"></script>
   </body>
 </html>

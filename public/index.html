@@ -3,7 +3,7 @@
   <head>
     <meta
       name="description"
-      content="Milton Keynes Sports Club offering community programs, player development, team fixtures, and club activities. Explore updates, join the team, and be part of our growing community."
+      content="Mavericks Sports Club in Milton Keynes and surrounding areas: futsal and handball for all ages and abilities. Explore our teams, latest news, fixtures and how to join."
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
       name="google-site-verification"
       content="y5eY3q6leQ-7j7tm5aih072rT1aWk1wJZsFjTd8nQ7A"
     />
-    <title>MK Mavericks Futsal Club</title>
+    <title>Mavericks Sports Club | Futsal & Handball</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -34,31 +34,66 @@
     <section class="featured-article" id="featured-article"></section>
 
     <!-- ===========================
-    What is Futsal Section
+    Welcome / Club Overview
     ============================ -->
-    <section id="what-is-futsal" class="section two-column">
-      <div class="column-left">
-        <h2>What is Futsal?</h2>
-        <p>
-          Futsal is a fast-paced indoor sport played on a small court with five
-          players per team.
-        </p>
-        <p>
-          The sport is recognized by FIFA and is played worldwide, with a strong
-          emphasis on player development and technical ability.
-        </p>
-        <p>
-          Elements of skill, agility, and teamwork are crucial when playing the
-          game especially when using a smaller, heavier ball than a standard
-          football.
-        </p>
+    <section class="section">
+      <h2>Welcome to the Mavericks</h2>
+      <p>
+        The Mavericks are a community sports club bringing together players of
+        all ages, abilities and backgrounds. We currently offer two fast-paced
+        indoor sports, futsal and handball, in a safe, positive and inclusive
+        environment where everyone can learn, play and enjoy the game.
+      </p>
+
+      <div class="cards sport-cards">
+        <a href="about.html" class="card sport-card">
+          <img src="images/futsal-action.JPG" alt="Futsal action" />
+          <h3>Mavericks Futsal</h3>
+          <p>
+            Men's, women's and youth teams playing the 5-a-side game recognised
+            by FIFA and UEFA.
+          </p>
+          <span class="sport-link">Explore futsal →</span>
+        </a>
+
+        <a href="mavericks-handball.html" class="card sport-card">
+          <img
+            src="images/hanballs_seniormale.jpeg"
+            alt="Mavericks Handball team"
+          />
+          <h3>Mavericks Handball</h3>
+          <p>
+            Adult, youth and junior teams for both recreational and competitive
+            players.
+          </p>
+          <span class="sport-link">Explore handball →</span>
+        </a>
       </div>
-      <div class="column-right">
-        <img
-          src="images/futsal-action.JPG"
-          alt="Futsal Action"
-          class="responsive-image"
-        />
+    </section>
+
+    <!-- ===========================
+    What are our sports?
+    ============================ -->
+    <section class="section">
+      <h2>Our Sports</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>What is Futsal?</h3>
+          <p>
+            A fast-paced indoor sport played on a small court with five players
+            per team. Played with a smaller, heavier ball than a standard
+            football, it rewards skill, agility and teamwork.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>What is Handball?</h3>
+          <p>
+            A fast-paced indoor team sport played between two teams of seven
+            players (six outfield and a goalkeeper). Players pass, dribble and
+            throw the ball into the opposition's net.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -74,7 +109,7 @@
     Fixtures Section
     ============================ -->
     <section class="section">
-      <h2>Latest Fixtures</h2>
+      <h2>Latest Futsal Fixtures</h2>
       <div class="fixtures-filters-row">
         <div class="fixtures-filters">
           <button data-team="all">All Teams</button>
@@ -100,25 +135,36 @@
       <script src="js/fixture-table.js"></script>
     </section>
 
+    <!-- ===========================
+    Join CTA
+    ============================ -->
+    <section class="section about-cta">
+      <h2>Get Involved</h2>
+      <p>
+        Whether you're brand new or an experienced player, there's a place for
+        you at the Mavericks.
+      </p>
+      <br />
+      <a href="join.html" class="cta-button">Join Us</a>
+    </section>
+
+    <!-- ===========================
+    Sponsors
+    ============================ -->
     <section>
       <div class="carousel">
-        <!-- <div class="sponsors-label">
-          <span>Our Sponsors</span>
-        </div> -->
         <div class="group">
           <div class="sponsor-card">
-            <img src="images\logos\bwc-sponsor.png" alt="BWC Sponsor" />
+            <img src="images/logos/bwc-sponsor.png" alt="BWC Sponsor" />
           </div>
-
           <div class="sponsor-card">
             <img
-              src="images\logos\hoc-Logo.jpg"
+              src="images/logos/hoc-Logo.jpg"
               alt="House of Chicken Sponsor"
             />
           </div>
-
           <div class="sponsor-card">
-            <img src="images\logos\equans-logo.jpg" alt="Equans Sponsor" />
+            <img src="images/logos/equans-logo.jpg" alt="Equans Sponsor" />
           </div>
         </div>
       </div>
@@ -129,26 +175,6 @@
     ============================ -->
     <footer id="footer"></footer>
     <script src="js/carousel.js"></script>
-    <script>
-      // Load navbar
-      fetch("partials/navbar.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const navbarContainer = document.getElementById("navbar");
-          navbarContainer.innerHTML = html;
-
-          // Force JS to load AFTER DOM update
-          setTimeout(() => {
-            const script = document.createElement("script");
-            script.src = "js/navbar.js";
-            document.body.appendChild(script);
-          }, 0);
-        });
-
-      // Load footer
-      fetch("partials/footer.html")
-        .then((res) => res.text())
-        .then((html) => (document.getElementById("footer").innerHTML = html));
-    </script>
+    <script src="js/global.js"></script>
   </body>
 </html>

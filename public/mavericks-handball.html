@@ -97,26 +97,6 @@
        Footer
   ============================ -->
     <footer id="footer"></footer>
-    <script>
-      // Load navbar
-      fetch("partials/navbar.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const navbarContainer = document.getElementById("navbar");
-          navbarContainer.innerHTML = html;
-
-          // Force JS to load AFTER DOM update
-          setTimeout(() => {
-            const script = document.createElement("script");
-            script.src = "js/navbar.js";
-            document.body.appendChild(script);
-          }, 0);
-        });
-
-      // Load footer
-      fetch("partials/footer.html")
-        .then((res) => res.text())
-        .then((html) => (document.getElementById("footer").innerHTML = html));
-    </script>
+    <script src="js/global.js"></script>
   </body>
 </html>

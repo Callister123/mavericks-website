@@ -34,32 +34,11 @@
         <div class="article-content"></div>
       </div>
     </section>
-    <!-- ===========================
-    Footer
-    ============================ -->
+
     <div id="footer"></div>
 
+    <script src = "js/global.js"></script>
     <script>
-      // Load navbar
-      fetch("partials/navbar.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const navbarContainer = document.getElementById("navbar");
-          navbarContainer.innerHTML = html;
-
-          // Force JS to load AFTER DOM update
-          setTimeout(() => {
-            const script = document.createElement("script");
-            script.src = "js/navbar.js";
-            document.body.appendChild(script);
-          }, 0);
-        });
-
-      // Load footer
-      fetch("partials/footer.html")
-        .then((res) => res.text())
-        .then((html) => (document.getElementById("footer").innerHTML = html));
-
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
 
