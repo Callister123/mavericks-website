@@ -1,7 +1,7 @@
 /* ============================
    Theme Variables
 ============================ */
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Archivo+Black&family=Khand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Archivo+Black&family=Khand:wght@300;400;500;600;700&display=swap");
 body.dark-mode {
   --bg: #050816;
   --text: #ffffff;
@@ -19,8 +19,14 @@ body.dark-mode {
   --border: #d1d5db;
   --card-text: #ffffff;
   --fixture-text: #ffffff;
-  --button: #da1415;  
+  --button: #da1415;
   --accent: #da1415;
+  --red: #db1516;
+  --white: #ffffff;
+  --yellow: #fdcb08;
+  --blue: #1946c5;
+  --futsal: var(--yellow);
+  --handball: var(--blue);
 }
 /* ============================
    Typography + Base
@@ -41,8 +47,15 @@ h5,
 h6 {
   font-family: "Archivo Black", sans-serif;
 }
-em, i {
-  font-family: 'Allura', cursive;
+em,
+i {
+  font-family: "Allura", cursive;
+}
+.sport-futsal h3 {
+  border-left: 6px solid var(--futsal);
+}
+.sport-handball h3 {
+  border-left: 6px solid var(--handball);
 }
 /* ============================
    Animations

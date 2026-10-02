@@ -200,6 +200,3 @@ document.addEventListener("click", (e) => {
   applyFilters();
 });
 document.addEventListener("DOMContentLoaded", loadFixtures);
-
-row.classList.add("removing");
-setTimeout(() => row.remove(), 250);

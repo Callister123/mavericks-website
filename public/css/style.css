@@ -683,7 +683,7 @@ body:not(.dark-mode) .fixture-row.official:hover {
   margin-top: 2rem;
 }
 .gov-card {
-  background: #0b1120;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
@@ -701,6 +701,27 @@ body:not(.dark-mode) .fixture-row.official:hover {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+.gov-red h3 {
+  border-left: 6px solid var(--button);
+}
+a.gov-card {
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+a.gov-card:hover {
+  transform: translateY(-3px);
+}
+.gov-card p {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--card-text);
+  opacity: 0.85;
+}
+.sports-grid .gov-image {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  background-position: var(--focus, center);
+  filter: none;
 }
 .gov-card h3 {
   font-size: 1.4rem;
