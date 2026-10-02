@@ -377,23 +377,23 @@ nav button {
   border-radius: 0.75rem;
   padding: 1.5rem;
   border: 1px solid #1f2937;
-  cursor: pointer;
 }
 .card h3 {
   margin-bottom: 0.5rem;
+}
+.cards a.card {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cards a.card:hover {
+  outline: 3px solid var(--yellow);
 }
 .fixtures-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-}
-.fixtures-key {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  font-size: 0.9rem;
-  color: var(--text);
 }
 .key-item {
   width: 16px;
@@ -858,7 +858,7 @@ a.gov-card:hover {
   animation: fadeInUp 0.6s ease forwards;
   overflow: hidden;
 }
-.caroursel::-webkit-scrollbar {
+.carousel::-webkit-scrollbar {
   display: none;
 }
 .group {
@@ -902,18 +902,10 @@ a.gov-card:hover {
 .sponsor-card img:hover {
   filter: brightness(1.2);
 }
-@keyframes spin {
-  from {
-    translate: 0;
-  }
-  to {
-    translate: -100%;
-  }
-}
 /* Join Page Two-Column Layout */
 .join-columns {
   grid-template-columns: 1fr 1fr;
-  gap: 1.5 rem;
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 
