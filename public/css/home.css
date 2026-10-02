@@ -61,7 +61,7 @@
   text-underline-offset: 4px;
 }
 .section-link:hover {
-  text-decoration-color: var(--blue);
+  text-decoration-color: var(--yellow);
 }
 
 /* ---------- Hero ---------- */
@@ -118,8 +118,8 @@
   color: var(--red);
 }
 .btn-solid:hover {
-  background: var(--blue);
-  border-color: var(--blue);
+  background: var(--yellow);
+  border-color: var(--yellow);
   color: var(--ink);
 }
 .btn-outline {
@@ -174,14 +174,42 @@ a.gov-card {
 }
 
 /* ---------- Who we are ---------- */
-.band-blue .column-right img {
-  border-color: rgba(255, 255, 255, 0.4);
+.who-band {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(25, 70, 197, 0.95) 0%,
+      rgba(25, 70, 197, 0.75) 50%,
+      rgba(25, 70, 197, 0.2) 100%
+    ),
+    url("../images/futsal-freekick.JPG") center / cover;
+  color: #fff;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
-.band-blue .column-left p {
+.who-text {
+  max-width: 560px;
+}
+.who-text h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+.who-text p {
+  font-size: 1.15rem;
   margin-bottom: 1rem;
 }
-.band-blue .column-left h2 {
-  margin-bottom: 1rem;
+@media (max-width: 768px) {
+  .who-band {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(25, 70, 197, 0.9) 0%,
+        rgba(25, 70, 197, 0.8) 100%
+      ),
+      url("../images/futsal-freekick.JPG") center / cover;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 /* ---------- Team cards as links ---------- */
@@ -196,7 +224,7 @@ a.gov-card {
 /* ---------- News on blue band ---------- */
 /* Featured article: full-width banner above the carousel */
 .featured-article {
-  height: 400px;
+  height: 480px;
   border-radius: 0;
   margin-bottom: 0;
   display: flex;
