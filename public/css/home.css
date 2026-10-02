@@ -73,7 +73,7 @@
       rgba(219, 21, 22, 0.55) 55%,
       rgba(25, 70, 197, 0.35) 100%
     ),
-    url("../images/futsal-action.JPG") center / cover;
+    url("../images/futsal-action.png") center / cover;
   color: #fff;
   padding: 6rem 2rem;
   min-height: 60vh;
@@ -182,7 +182,7 @@ a.gov-card {
       rgba(25, 70, 197, 0.75) 50%,
       rgba(25, 70, 197, 0.2) 100%
     ),
-    url("../images/futsal-freekick.JPG") center / cover;
+    url("../images/futsal-freekick.png") center / cover;
   color: #fff;
   padding-top: 6rem;
   padding-bottom: 6rem;
@@ -206,7 +206,7 @@ a.gov-card {
         rgba(25, 70, 197, 0.9) 0%,
         rgba(25, 70, 197, 0.8) 100%
       ),
-      url("../images/futsal-freekick.JPG") center / cover;
+      url("../images/futsal-freekick.png") center / cover;
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
