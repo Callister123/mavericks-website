@@ -13,10 +13,10 @@ async function loadPartial(id, url) {
   }
 }
 
-// Apply the saved theme straight away (default dark) to avoid a flash
+// Dark mode only if the visitor chose it; light is the default
 document.body.classList.toggle(
   "dark-mode",
-  (localStorage.getItem("theme") || "dark") === "dark",
+  localStorage.getItem("mavericks-theme") === "dark",
 );
 
 // Mark the link for the current page as active

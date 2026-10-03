@@ -18,16 +18,8 @@ document.querySelectorAll(".dropdown").forEach(drop => {
 
 const themeBtn = document.querySelector(".theme-toggle");
 
-function applyTheme(mode) {
-  document.body.classList.toggle("dark-mode", mode === "dark");
-  localStorage.setItem("theme", mode);
-}
-
 themeBtn.addEventListener("click", () => {
-  const current = localStorage.getItem("theme") || "dark";
-  const next = current === "dark" ? "light" : "dark";
-  applyTheme(next);
+  const goDark = !document.body.classList.contains("dark-mode");
+  document.body.classList.toggle("dark-mode", goDark);
+  localStorage.setItem("mavericks-theme", goDark ? "dark" : "light");
 });
-
-// Load saved theme
-applyTheme(localStorage.getItem("theme") || "dark");
