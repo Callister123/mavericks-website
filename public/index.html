@@ -164,16 +164,34 @@
         <div class="section-head">
           <h2>Fixtures and results</h2>
         </div>
+        <div class="form-guide" id="form-guide" aria-live="polite"></div>
+        <p class="form-caption">Form: last 5 official results, oldest to newest</p>
         <div class="fixtures-filters-row">
           <div class="fixtures-filters">
-            <button data-team="all">All Teams</button>
-            <button data-team="development">Development</button>
-            <button data-team="first">First Team</button>
-            <button data-team="women">Women's Team</button>
-
-            <button data-type="all">All Types</button>
-            <button data-type="friendly">Friendly</button>
-            <button data-type="official">Official</button>
+            <label>
+              <span>Team</span>
+              <select id="team-filter">
+                <option value="all">All teams</option>
+                <optgroup label="Futsal">
+                  <option value="first">First Team</option>
+                  <option value="women">Women's Team</option>
+                  <option value="development">Development</option>
+                </optgroup>
+                <optgroup label="Handball">
+                  <option value="handball">All handball</option>
+                  <option value="handball-mens">Handball Men's</option>
+                  <option value="handball-womens">Handball Women's</option>
+                </optgroup>
+              </select>
+            </label>
+            <label>
+              <span>Type</span>
+              <select id="type-filter">
+                <option value="all">All types</option>
+                <option value="official">Official</option>
+                <option value="friendly">Friendly</option>
+              </select>
+            </label>
           </div>
           <div class="fixtures-key">
             <span class="key-item friendly-key"></span> Friendly

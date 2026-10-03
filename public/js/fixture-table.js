@@ -9,6 +9,89 @@ let pastFixtures = [];
 let currentPage = 1;
 const FIXTURES_PER_PAGE = 10;
 
+// How scores are written in the Google Sheet:
+//   "home-away"   -> 2-5 means home team 2, away team 5 (usual way)
+//   "ours-theirs" -> 2-5 means Mavericks 2, opponent 5
+const SCORE_ORDER = "home-away";
+
+const RESULT_LABELS = { w: "Win", d: "Draw", l: "Loss" };
+
+// Escape text from the sheet before putting it into the page
+function esc(text) {
+  const el = document.createElement("div");
+  el.textContent = text ?? "";
+  return el.innerHTML;
+}
+
+// Work out W / D / L for a fixture, or null if there is no numeric score yet
+function getResult(f) {
+  const m = /^(\d+)\s*[-\u2013:]\s*(\d+)$/.exec((f.score || "").trim());
+  if (!m) return null;
+  const first = Number(m[1]);
+  const second = Number(m[2]);
+  let ours = first;
+  let theirs = second;
+  if (SCORE_ORDER === "home-away" && !f.home.toLowerCase().includes("mavericks")) {
+    ours = second;
+    theirs = first;
+  }
+  return ours > theirs ? "w" : ours < theirs ? "l" : "d";
+}
+
+// ============================
+// FORM GUIDE: last 5 official results per team
+// ============================
+const TEAM_LABELS = {
+  first: "First Team",
+  women: "Women's Team",
+  development: "Development",
+  "handball-mens": "Handball Men's",
+  "handball-womens": "Handball Women's",
+  handball: "Handball",
+};
+const FORM_LENGTH = 5;
+
+function teamLabel(team) {
+  return TEAM_LABELS[team] || team.charAt(0).toUpperCase() + team.slice(1);
+}
+
+function renderFormGuide(teamFilter = "all") {
+  const box = document.getElementById("form-guide");
+  if (!box) return;
+
+  // Official games with a numeric score, oldest first
+  const played = allFixtures.filter(
+    (f) => f.type === "official" && f.team && getResult(f),
+  );
+  const teams = [...new Set(played.map((f) => f.team))].sort((a, b) => {
+    const order = Object.keys(TEAM_LABELS);
+    const ia = order.indexOf(a) === -1 ? 99 : order.indexOf(a);
+    const ib = order.indexOf(b) === -1 ? 99 : order.indexOf(b);
+    return ia - ib;
+  });
+
+  const visible = teams.filter((t) => matchesTeam(t, teamFilter));
+
+  box.innerHTML = visible
+    .map((team) => {
+      const last = played.filter((f) => f.team === team).slice(-FORM_LENGTH);
+      const dots = last.map((f) => {
+        const r = getResult(f);
+        const opponent = f.home.toLowerCase().includes("mavericks") ? f.away : f.home;
+        const tip = `${RESULT_LABELS[r]} vs ${opponent} (${f.score})`;
+        return `<span class="form-dot form-dot-${r}" title="${esc(tip)}"></span>`;
+      });
+      while (dots.length < FORM_LENGTH) dots.unshift('<span class="form-dot form-dot-empty"></span>');
+      const summary = last.map((f) => RESULT_LABELS[getResult(f)]).join(", ");
+      return `
+        <div class="form-team" role="img" aria-label="${esc(teamLabel(team))} last ${last.length} official results, oldest to newest: ${esc(summary)}">
+          <span class="form-name">${esc(teamLabel(team))}</span>
+          <span class="form-dots">${dots.join("")}</span>
+        </div>`;
+    })
+    .join("");
+}
+
 // ============================
 // PARSE CSV → FIXTURE OBJECTS
 // ============================
@@ -23,7 +106,7 @@ function parseCSV(csv) {
         .map((col) => col.replace(/^"|"$/g, "").trim());
 
       return {
-        team: cols[0],
+        team: (cols[0] || "").toLowerCase(),
         date: cols[1],
         time: cols[2],
         home: cols[3],
@@ -70,9 +153,7 @@ async function loadFixtures() {
     pastFixtures.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     renderFixturesTable(allFixtures);
-
-    document.querySelector('[data-team="all"]').classList.add("active");
-    document.querySelector('[data-type="all"]').classList.add("active");
+    renderFormGuide();
   } catch (err) {
     console.error("Error loading fixtures:", err);
   }
@@ -109,12 +190,17 @@ function renderFixturesTable(fixtures) {
     const row = document.createElement("div");
     row.classList.add("fixture-row", type);
 
+    const result = getResult(f);
+    const badge = result
+      ? `<span class="result result-${result}" title="${RESULT_LABELS[result]}" aria-label="${RESULT_LABELS[result]}">${result.toUpperCase()}</span>`
+      : "";
+
     row.innerHTML = `
-      <div>${formatDate(f.date)}</div>
-      <div>${opponent}</div>
-      <div>${f.time || "TBC"}</div>
-      <div>${f.venue || "TBC"}</div>
-      <div>${f.score || "TBC"}</div>
+      <div>${esc(formatDate(f.date))}</div>
+      <div>${esc(opponent)}</div>
+      <div>${esc(f.time || "TBC")}</div>
+      <div>${esc(f.venue || "TBC")}</div>
+      <div class="score-cell">${badge}<span>${esc(f.score || "TBC")}</span></div>
     `;
 
     container.appendChild(row);
@@ -139,26 +225,28 @@ function updatePaginationControls(totalFixtures) {
   document.getElementById("next-page").disabled = currentPage === totalPages;
 }
 
+// Does a fixture's team match the chosen team filter?
+// "handball" = every handball team; anything else must match exactly.
+function matchesTeam(team, filter) {
+  if (filter === "all") return true;
+  if (filter === "handball") return team.includes("handball");
+  return team === filter;
+}
+
 function applyFilters() {
-  const teamFilter =
-    document.querySelector(".fixtures-filters button.active[data-team]")
-      ?.dataset.team || "all";
-  const typeFilter =
-    document.querySelector(".fixtures-filters button.active[data-type]")
-      ?.dataset.type || "all";
+  const teamFilter = document.getElementById("team-filter")?.value || "all";
+  const typeFilter = document.getElementById("type-filter")?.value || "all";
 
-  let filtered = allFixtures;
-
-  if (teamFilter !== "all") {
-    filtered = filtered.filter((f) => f.team === teamFilter);
-  }
-
-  if (typeFilter !== "all") {
-    filtered = filtered.filter((f) => f.type === typeFilter);
-  }
+  const filtered = allFixtures.filter(
+    (f) =>
+      matchesTeam(f.team, teamFilter) &&
+      (typeFilter === "all" || f.type === typeFilter),
+  );
 
   renderFixturesTable(filtered);
+  renderFormGuide(teamFilter);
 }
+
 document.getElementById("prev-page").addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
@@ -171,32 +259,10 @@ document.getElementById("next-page").addEventListener("click", () => {
   applyFilters();
 });
 
-document.addEventListener("click", (e) => {
-  if (!e.target.matches(".fixtures-filters button")) return;
-
+["team-filter", "type-filter"].forEach((id) => {
+  document.getElementById(id)?.addEventListener("change", () => {
     currentPage = 1;
-
-  const isTeamButton = e.target.dataset.team !== undefined;
-  const isTypeButton = e.target.dataset.type !== undefined;
-
-  // TEAM FILTER BUTTONS
-  if (isTeamButton) {
-    document
-      .querySelectorAll(".fixtures-filters button[data-team]")
-      .forEach((btn) => btn.classList.remove("active"));
-
-    e.target.classList.add("active");
-  }
-
-  // TYPE FILTER BUTTONS
-  if (isTypeButton) {
-    document
-      .querySelectorAll(".fixtures-filters button[data-type]")
-      .forEach((btn) => btn.classList.remove("active"));
-
-    e.target.classList.add("active");
-  }
-
-  applyFilters();
+    applyFilters();
+  });
 });
 document.addEventListener("DOMContentLoaded", loadFixtures);

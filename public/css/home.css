@@ -352,3 +352,101 @@ a.gov-card {
     background: rgba(219, 21, 22, 0.78);
   }
 }
+
+/* ---------- Fixture result badges ---------- */
+.score-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.result {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 0.8rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+.result-w { background: #15803d; }
+.result-d { background: #6b7280; }
+.result-l { background: var(--red); }
+
+
+/* ---------- Form guide: one tidy line on desktop, two columns on phones ---------- */
+.form-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2.5rem;
+  margin-bottom: 0.25rem;
+}
+.form-team {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.form-name { font-weight: 700; font-size: 1.1rem; }
+.form-dots { display: flex; gap: 0.35rem; flex-shrink: 0; }
+.form-dot { width: 0.9rem; height: 0.9rem; border-radius: 50%; }
+.form-dot-w { background: #15803d; }
+.form-dot-d { background: #6b7280; }
+.form-dot-l { background: var(--red); }
+.form-dot-empty { border: 2px solid var(--border); }
+.form-caption { font-size: 0.9rem; opacity: 0.75; margin-bottom: 1.25rem; }
+@media (max-width: 600px) {
+  .form-guide {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 1rem;
+  }
+  .form-team { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .form-name { font-size: 1rem; }
+  .form-dot { width: 0.8rem; height: 0.8rem; }
+}
+
+/* ---------- Fixture filters: dropdowns side by side, key on the right ---------- */
+.fixtures-filters-row {
+  align-items: flex-end;
+}
+.fixtures-filters {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 1rem;
+  margin-bottom: 0;
+}
+.fixtures-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 0;
+}
+.fixtures-filters select {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 2px solid var(--red);
+  background: var(--card-bg);
+  color: var(--card-text);
+  width: 100%;
+  cursor: pointer;
+}
+.fixtures-filters select option,
+.fixtures-filters select optgroup {
+  background: #fff;
+  color: #111827;
+}
+.fixtures-filters select:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+@media (max-width: 600px) {
+  .fixtures-filters { grid-template-columns: 1fr 1fr; width: 100%; }
+  .fixtures-key { width: 100%; }
+}
