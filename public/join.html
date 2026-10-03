@@ -34,16 +34,19 @@
         <div class="join-left">
           <h3>Why Join the Mavericks?</h3>
           <ul class="benefits-list">
-            <li>Train with experienced futsal coaches</li>
+            <li>Train with experienced futsal and handball coaches</li>
             <li>Be part of Milton Keynes' fastest-growing futsal club</li>
             <li>Opportunities for competitive and development squads</li>
             <li>Inclusive environment for all ages and abilities</li>
           </ul>
 
           <h3>Venue Details</h3>
-          <p><strong>Location:</strong> Cranfield University Sports Hall</p>
-          <p><strong>Training Days:</strong> Tuesdays & Thursdays</p>
-          <p><strong>Time:</strong> 18:00 - 21:00</p>
+          <p>
+            <strong>Location:</strong> Cranfield University Sports Hall /
+            Aylesbury Grammar School / Cottesloe Sports Centre
+          </p>
+          <p><strong>Training Days:</strong> Wednesdays & Fridays</p>
+          <p><strong>Time:</strong> 18:00 - 22:00</p>
 
           <h3>Contact Us</h3>
           <p>
@@ -58,6 +61,13 @@
           method="POST"
           class="contact-form"
         >
+          <label>Sport</label>
+          <select name="sport" required>
+            <option value="">Select a sport</option>
+            <option value="futsal">Futsal</option>
+            <option value="handball">Handball</option>
+          </select>
+
           <label>Name</label>
           <input type="text" name="name" required />
 
