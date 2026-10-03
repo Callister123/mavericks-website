@@ -296,3 +296,59 @@ a.gov-card {
     padding: 4rem 1rem;
   }
 }
+/* ---------- Inner page hero ---------- */
+.page-hero {
+  position: relative;
+  background: var(--red) center / cover no-repeat; /* image is set inline on the element */
+  color: #fff;
+  padding: 4.5rem 2rem;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(219, 21, 22, 0.92) 0%, rgba(219, 21, 22, 0.55) 60%, rgba(25, 70, 197, 0.35) 100%);
+}
+.page-hero--blue {
+  background-color: var(--blue);
+}
+.page-hero--blue::before {
+  background: linear-gradient(90deg, rgba(25, 70, 197, 0.95) 0%, rgba(25, 70, 197, 0.7) 60%, rgba(219, 21, 22, 0.35) 100%);
+}
+.page-hero-inner { position: relative; max-width: 1200px; margin: 0 auto; width: 100%; }
+.page-hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin-bottom: 0.75rem; }
+.page-hero p { font-size: 1.2rem; max-width: 44ch; }
+.page-hero .hero-actions { margin-top: 1.5rem; }
+
+/* ---------- About page ---------- */
+.sport-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.sport-split.reverse .sport-img { order: -1; }
+.sport-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.sport-text h2 { margin-bottom: 1rem; font-size: clamp(2rem, 5vw, 3rem); }
+.sport-text h3 { margin: 1.25rem 0 0.5rem; }
+.sport-text p { font-size: 1.1rem; margin-bottom: 1rem; }
+.sport-text .benefits-list { margin: 0.5rem 0 1rem; }
+.prose { max-width: 70ch; font-size: 1.15rem; }
+.prose p { margin-bottom: 1rem; }
+.staff .card { cursor: default; }
+@media (max-width: 768px) {
+  .sport-split { grid-template-columns: 1fr; gap: 1.5rem; }
+  .sport-split.reverse .sport-img { order: 0; }
+  .page-hero { padding: 3rem 1rem; min-height: 260px; }
+}
+
+/* About hero: pre-composed futsal + handball photos. A soft red fade on the left keeps the text readable. */
+.page-hero--split {
+  background-position: center;
+}
+.page-hero--split::before {
+  background: linear-gradient(90deg, rgba(219, 21, 22, 0.9) 0%, rgba(219, 21, 22, 0.55) 30%, rgba(219, 21, 22, 0) 58%);
+}
+@media (max-width: 768px) {
+  .page-hero--split::before {
+    background: rgba(219, 21, 22, 0.78);
+  }
+}
