@@ -2,7 +2,7 @@
   {
     "id": "first-team-promotion",
     "title": "First Team Promotion",
-    "image": "images/article-images/article1.png",
+    "image": "images/article-images/article1.webp",
     "summary": "Mavericks Men's First Team get promoted to the top tier of UK futsal!",
     "content": [
       "Milton Keynes' own MK Mavericks Futsal Club have secured promotion to the top tier of UK futsal for the first time in the club's history after defeating league favourites West London in a decisive end to a remarkable season.",
@@ -22,7 +22,7 @@
   {
     "id": "celebrating-success",
     "title": "Celebrating Success",
-    "image": "images/article-images/article3.png",
+    "image": "images/article-images/article3.webp",
     "summary": "Reflecting on the team's achievements this season.",
     "content": [
       "The Mavericks have had a fantastic season, and it's time to celebrate the incredible efforts of the players and staff.",
@@ -35,7 +35,7 @@
   {
     "id": "big-win-first-team",
     "title": "Big Win for the First Team",
-    "image": "images/article-images/article2.png",
+    "image": "images/article-images/article2.webp",
     "summary": "A dominant performance from the squad this weekend.",
     "type": "match-report",
     "date": "2026-05-03",
@@ -51,7 +51,7 @@
   {
     "id": "youth-development",
     "title": "Youth Development Spotlight",
-    "image": "images/article-images/youth-futsal-action.png",
+    "image": "images/article-images/youth-futsal-action.webp",
     "summary": "How our young players are growing through futsal.",
     "content": [
       "Our youth players continue to impress with their rapid development in futsal.",
