@@ -1028,3 +1028,12 @@ a.gov-card:hover {
     padding: 1.5rem 0 0;
   }
 }
+.team-fixtures h3 {
+  margin: 0 0 0.75rem;
+}
+.team-fixtures .fixtures-table {
+  margin: 0 0 2.5rem;
+}
+.team-fixtures .fixtures-table:last-child {
+  margin-bottom: 0;
+}
