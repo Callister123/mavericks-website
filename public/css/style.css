@@ -1037,3 +1037,42 @@ a.gov-card:hover {
 .team-fixtures .fixtures-table:last-child {
   margin-bottom: 0;
 }
+@media (max-width: 700px) {
+  .fixture-row:not(.header):not(.empty) {
+    position: relative;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  .fixture-row:not(.header):not(.empty)::after {
+    content: "\25BE";
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+  .fixture-row.open::after {
+    transform: rotate(180deg);
+  }
+  .fixture-row.open div:nth-child(n + 3) {
+    display: block;
+    grid-column: 1 / -1;
+  }
+  .fixture-row.open div:nth-child(3) {
+    margin-top: 0.4rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .fixture-row:not(.header) div:nth-child(3)::before {
+    content: "Time: ";
+    font-weight: 700;
+  }
+  .fixture-row:not(.header) div:nth-child(4)::before {
+    content: "Venue: ";
+    font-weight: 700;
+  }
+  .fixture-row:not(.header) div:nth-child(5)::before {
+    content: "Score: ";
+    font-weight: 700;
+    margin-right: 0.4rem;
+  }
+}

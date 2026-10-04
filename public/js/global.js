@@ -46,3 +46,38 @@ loadPartial("footer", "partials/footer.html").then((ok) => {
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 });
+// Fixtures on phones: tap a row to show time, venue and score
+const mobileView = window.matchMedia("(max-width: 700px)");
+
+function toggleFixtureRow(row) {
+  const open = row.classList.toggle("open");
+  row.setAttribute("aria-expanded", open);
+}
+
+// Make rows keyboard/screen-reader friendly whenever the tables are (re)drawn
+function enhanceFixtureRows() {
+  if (!mobileView.matches) return;
+  document
+    .querySelectorAll(".fixture-row:not(.header):not(.empty):not([role])")
+    .forEach((row) => {
+      row.setAttribute("role", "button");
+      row.setAttribute("tabindex", "0");
+      row.setAttribute("aria-expanded", "false");
+    });
+}
+new MutationObserver(enhanceFixtureRows).observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+document.addEventListener("click", (e) => {
+  const row = e.target.closest(".fixture-row:not(.header):not(.empty)");
+  if (row && mobileView.matches) toggleFixtureRow(row);
+});
+
+document.addEventListener("keydown", (e) => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches?.(".fixture-row[role='button']")) {
+    e.preventDefault();
+    toggleFixtureRow(e.target);
+  }
+});
