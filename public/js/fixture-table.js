@@ -152,8 +152,7 @@ async function loadFixtures() {
     // Sort past (most recent first)
     pastFixtures.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    renderFixturesTable(allFixtures);
-    renderFormGuide();
+    applyFilters();
   } catch (err) {
     console.error("Error loading fixtures:", err);
   }
