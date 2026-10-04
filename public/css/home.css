@@ -310,34 +310,95 @@ a.gov-card {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(219, 21, 22, 0.92) 0%, rgba(219, 21, 22, 0.55) 60%, rgba(25, 70, 197, 0.35) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(219, 21, 22, 0.92) 0%,
+    rgba(219, 21, 22, 0.55) 60%,
+    rgba(25, 70, 197, 0.35) 100%
+  );
 }
 .page-hero--blue {
   background-color: var(--blue);
 }
 .page-hero--blue::before {
-  background: linear-gradient(90deg, rgba(25, 70, 197, 0.95) 0%, rgba(25, 70, 197, 0.7) 60%, rgba(219, 21, 22, 0.35) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(25, 70, 197, 0.95) 0%,
+    rgba(25, 70, 197, 0.7) 60%,
+    rgba(219, 21, 22, 0.35) 100%
+  );
 }
-.page-hero-inner { position: relative; max-width: 1200px; margin: 0 auto; width: 100%; }
-.page-hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin-bottom: 0.75rem; }
-.page-hero p { font-size: 1.2rem; max-width: 44ch; }
-.page-hero .hero-actions { margin-top: 1.5rem; }
+.page-hero-inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.page-hero p {
+  font-size: 1.2rem;
+  max-width: 44ch;
+}
+.page-hero .hero-actions {
+  margin-top: 1.5rem;
+}
 
 /* ---------- About page ---------- */
-.sport-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-.sport-split.reverse .sport-img { order: -1; }
-.sport-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
-.sport-text h2 { margin-bottom: 1rem; font-size: clamp(2rem, 5vw, 3rem); }
-.sport-text h3 { margin: 1.25rem 0 0.5rem; }
-.sport-text p { font-size: 1.1rem; margin-bottom: 1rem; }
-.sport-text .benefits-list { margin: 0.5rem 0 1rem; }
-.prose { max-width: 70ch; font-size: 1.15rem; }
-.prose p { margin-bottom: 1rem; }
-.staff .card { cursor: default; }
+.sport-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.sport-split.reverse .sport-img {
+  order: -1;
+}
+.sport-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.sport-text h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+.sport-text h3 {
+  margin: 1.25rem 0 0.5rem;
+}
+.sport-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.sport-text .benefits-list {
+  margin: 0.5rem 0 1rem;
+}
+.prose {
+  max-width: 70ch;
+  font-size: 1.15rem;
+}
+.prose p {
+  margin-bottom: 1rem;
+}
+.staff .card {
+  cursor: default;
+}
 @media (max-width: 768px) {
-  .sport-split { grid-template-columns: 1fr; gap: 1.5rem; }
-  .sport-split.reverse .sport-img { order: 0; }
-  .page-hero { padding: 3rem 1rem; min-height: 260px; }
+  .sport-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .sport-split.reverse .sport-img {
+    order: 0;
+  }
+  .page-hero {
+    padding: 3rem 1rem;
+    min-height: 260px;
+  }
 }
 
 /* About hero: pre-composed futsal + handball photos. A soft red fade on the left keeps the text readable. */
@@ -345,7 +406,12 @@ a.gov-card {
   background-position: center;
 }
 .page-hero--split::before {
-  background: linear-gradient(90deg, rgba(219, 21, 22, 0.9) 0%, rgba(219, 21, 22, 0.55) 30%, rgba(219, 21, 22, 0) 58%);
+  background: linear-gradient(
+    90deg,
+    rgba(219, 21, 22, 0.9) 0%,
+    rgba(219, 21, 22, 0.55) 30%,
+    rgba(219, 21, 22, 0) 58%
+  );
 }
 @media (max-width: 768px) {
   .page-hero--split::before {
@@ -371,10 +437,15 @@ a.gov-card {
   color: #fff;
   flex-shrink: 0;
 }
-.result-w { background: #15803d; }
-.result-d { background: #6b7280; }
-.result-l { background: var(--red); }
-
+.result-w {
+  background: #15803d;
+}
+.result-d {
+  background: #6b7280;
+}
+.result-l {
+  background: var(--red);
+}
 
 /* ---------- Form guide: one tidy line on desktop, two columns on phones ---------- */
 .form-guide {
@@ -388,23 +459,55 @@ a.gov-card {
   align-items: center;
   gap: 0.75rem;
 }
-.form-name { font-weight: 700; font-size: 1.1rem; }
-.form-dots { display: flex; gap: 0.35rem; flex-shrink: 0; }
-.form-dot { width: 0.9rem; height: 0.9rem; border-radius: 50%; }
-.form-dot-w { background: #15803d; }
-.form-dot-d { background: #6b7280; }
-.form-dot-l { background: var(--red); }
-.form-dot-empty { border: 2px solid var(--border); }
-.form-caption { font-size: 0.9rem; opacity: 0.75; margin-bottom: 1.25rem; }
+.form-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.form-dots {
+  display: flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+.form-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+}
+.form-dot-w {
+  background: #15803d;
+}
+.form-dot-d {
+  background: #6b7280;
+}
+.form-dot-l {
+  background: var(--red);
+}
+.form-dot-empty {
+  border: 2px solid var(--border);
+}
+.form-caption {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-bottom: 1.25rem;
+}
 @media (max-width: 600px) {
   .form-guide {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.9rem 1rem;
   }
-  .form-team { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-  .form-name { font-size: 1rem; }
-  .form-dot { width: 0.8rem; height: 0.8rem; }
+  .form-team {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .form-name {
+    font-size: 1rem;
+  }
+  .form-dot {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
 }
 
 /* ---------- Fixture filters: dropdowns side by side, key on the right ---------- */
@@ -447,6 +550,11 @@ a.gov-card {
   outline-offset: 2px;
 }
 @media (max-width: 600px) {
-  .fixtures-filters { grid-template-columns: 1fr 1fr; width: 100%; }
-  .fixtures-key { width: 100%; }
+  .fixtures-filters {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .fixtures-key {
+    width: 100%;
+  }
 }
