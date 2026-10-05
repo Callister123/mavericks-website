@@ -21,7 +21,7 @@ fetch("data/articles.json")
       card.href = `article.html?id=${article.id}`;
 
       card.innerHTML = `
-        <img src="${article.image}" alt="${article.title}" class="carousel-img" loading="lazy">
+        <img src="${article.image}" alt="" class="carousel-img" loading="lazy">
         <div class="carousel-overlay"></div>
         <span class="article-tag">${article.type.replace("-", " ")}</span>
         ${isMatch ? `<span class="score-badge">${article.score}</span>` : ""}

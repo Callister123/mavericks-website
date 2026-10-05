@@ -30,7 +30,7 @@
     <section class="article-section">
       <div class="article-container">
         <h1 class="article-title"></h1>
-        <img class="article-image" src="" alt="" />
+        <img class="article-image" alt="" hidden />
         <div class="article-content"></div>
       </div>
     </section>
@@ -44,6 +44,7 @@
 
       const titleEl = document.querySelector(".article-title");
       const imageEl = document.querySelector(".article-image");
+      imageEl.hidden = false;
       const contentDiv = document.querySelector(".article-content");
 
       // Escape the text, then turn web addresses into links
@@ -71,6 +72,9 @@
           if (!article) return showNotFound();
 
           document.title = `${article.title} | MK Mavericks Sports Club`;
+          document
+            .querySelector('meta[name="description"]')
+            ?.setAttribute("content", article.summary);
           titleEl.textContent = article.title;
           imageEl.src = article.image;
           imageEl.alt = article.title;
