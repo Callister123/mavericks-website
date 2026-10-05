@@ -37,31 +37,53 @@
 
     <div id="footer"></div>
 
-    <script src = "js/global.js"></script>
+    <script src="js/global.js"></script>
     <script>
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
+
+      const titleEl = document.querySelector(".article-title");
+      const imageEl = document.querySelector(".article-image");
+      const contentDiv = document.querySelector(".article-content");
+
+      // Escape the text, then turn web addresses into links
+      function linkify(text) {
+        const safe = text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+        return safe.replace(
+          /(https?:\/\/[^\s)]+)/g,
+          '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>',
+        );
+      }
+
+      function showNotFound() {
+        titleEl.textContent = "Article Not Found";
+        document.title = "Article Not Found | MK Mavericks Sports Club";
+        imageEl.hidden = true;
+      }
 
       fetch("data/articles.json")
         .then((res) => res.json())
         .then((articles) => {
           const article = articles.find((a) => a.id === id);
+          if (!article) return showNotFound();
 
-          if (!article) {
-            document.querySelector(".article-title").innerText =
-              "Article Not Found";
-            return;
-          }
+          document.title = `${article.title} | MK Mavericks Sports Club`;
+          titleEl.textContent = article.title;
+          imageEl.src = article.image;
+          imageEl.alt = article.title;
 
-          document.querySelector(".article-title").innerText = article.title;
-          document.querySelector(".article-image").src = article.image;
-
-          const contentDiv = document.querySelector(".article-content");
           article.content.forEach((paragraph) => {
             const p = document.createElement("p");
-            p.innerText = paragraph;
+            p.innerHTML = linkify(paragraph);
             contentDiv.appendChild(p);
           });
+        })
+        .catch((err) => {
+          console.error("Could not load article:", err);
+          showNotFound();
         });
     </script>
   </body>

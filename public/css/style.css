@@ -266,11 +266,6 @@ nav button {
 /* ============================
    CAROUSEL
 ============================ */
-.article-carousel {
-  margin: 3rem auto;
-  max-width: 1200px;
-  padding: 0 1rem;
-}
 .carousel-title {
   font-size: 1.8rem;
   font-weight: 700;
@@ -369,7 +364,6 @@ nav button {
     transparent 75%
   );
 }
-
 .carousel-body {
   position: absolute;
   left: 0;
@@ -422,14 +416,8 @@ nav button {
   font-weight: 700;
   border-radius: 8px;
 }
-
-.read-more {
-  margin-top: 0.4rem;
-  font-weight: 700;
-  color: #fff;
-}
 .read-more i {
-  font-family: "Font Awesome 6 Free"; /* stops the theme's cursive <i> font overriding the arrow */
+  font-family: "Font Awesome 6 Free";
   font-style: normal;
   display: inline-block;
   transition: transform 0.25s ease;
@@ -725,6 +713,11 @@ body:not(.dark-mode) .fixture-row.official:hover {
 }
 .article-content p {
   margin-bottom: 1rem;
+}
+.article-content a {
+  color: var(--button);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 /* ============================
    ABOUT PAGE

@@ -31,7 +31,10 @@ function getResult(f) {
   const second = Number(m[2]);
   let ours = first;
   let theirs = second;
-  if (SCORE_ORDER === "home-away" && !f.home.toLowerCase().includes("mavericks")) {
+  if (
+    SCORE_ORDER === "home-away" &&
+    !f.home.toLowerCase().includes("mavericks")
+  ) {
     ours = second;
     theirs = first;
   }
@@ -77,11 +80,14 @@ function renderFormGuide(teamFilter = "all") {
       const last = played.filter((f) => f.team === team).slice(-FORM_LENGTH);
       const dots = last.map((f) => {
         const r = getResult(f);
-        const opponent = f.home.toLowerCase().includes("mavericks") ? f.away : f.home;
+        const opponent = f.home.toLowerCase().includes("mavericks")
+          ? f.away
+          : f.home;
         const tip = `${RESULT_LABELS[r]} vs ${opponent} (${f.score})`;
         return `<span class="form-dot form-dot-${r}" title="${esc(tip)}"></span>`;
       });
-      while (dots.length < FORM_LENGTH) dots.unshift('<span class="form-dot form-dot-empty"></span>');
+      while (dots.length < FORM_LENGTH)
+        dots.unshift('<span class="form-dot form-dot-empty"></span>');
       const summary = last.map((f) => RESULT_LABELS[getResult(f)]).join(", ");
       return `
         <div class="form-team" role="img" aria-label="${esc(teamLabel(team))} last ${last.length} official results, oldest to newest: ${esc(summary)}">
@@ -141,16 +147,19 @@ async function loadFixtures() {
 
     allFixtures = parseCSV(csvText);
 
-    const now = new Date();
+    // Oldest first: the form guide relies on this order, so leave allFixtures alone
     allFixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
-    upcomingFixtures = allFixtures.filter((f) => new Date(f.date) >= now);
-    pastFixtures = allFixtures.filter((f) => new Date(f.date) < now);
 
-    // Sort upcoming (soonest first)
-    upcomingFixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Compare against the start of today so a match later today still counts as upcoming
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    // Sort past (most recent first)
-    pastFixtures.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Soonest first
+    upcomingFixtures = allFixtures.filter((f) => new Date(f.date) >= today);
+    // Most recent first (filter makes a new array, so reverse() doesn't touch allFixtures)
+    pastFixtures = allFixtures
+      .filter((f) => new Date(f.date) < today)
+      .reverse();
 
     applyFilters();
   } catch (err) {
@@ -236,10 +245,13 @@ function applyFilters() {
   const teamFilter = document.getElementById("team-filter")?.value || "all";
   const typeFilter = document.getElementById("type-filter")?.value || "all";
 
-  const filtered = allFixtures.filter(
+  const ordered = [...upcomingFixtures, ...pastFixtures];
+  const filtered = ordered.filter(
     (f) =>
-      matchesTeam(f.team, teamFilter) &&
-      (typeFilter === "all" || f.type === typeFilter),
+      {
+        return matchesTeam(f.team, teamFilter) &&
+          (typeFilter === "all" || f.type === typeFilter);
+      },
   );
 
   renderFixturesTable(filtered);
