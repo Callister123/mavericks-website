@@ -151,16 +151,34 @@
     </section>
 
     <!-- 6. News -->
-    <!-- carousel.js fills this in -->
-    <section class="featured-article" id="featured-article"></section>
-    <section class="band band-base">
-      <div class="band-inner">
-        <div class="section-head">
-          <h2 class="carousel-title" style="margin-bottom: 0">
-            Latest updates
-          </h2>
-        </div>
+    <section class="featured-article" id="featured-article">
+      <div
+        class="featured-bg"
+        style="
+          background-image: url(&quot;images/article-images/article1.webp&quot;);
+        "
+      ></div>
+      <div class="featured-content">
+        <h2>First Team Promotion</h2>
+        <p>
+          Mavericks Men's First Team get promoted to the top tier of UK futsal!
+        </p>
+        <a href="article.html?id=first-team-promotion" class="featured-btn"
+          >Read More</a
+        >
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="carousel-title">Latest Updates</h2>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Previous articles">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <div class="carousel-track" id="carousel-track"></div>
+        <button class="carousel-btn next" aria-label="Next articles">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
     </section>
 
@@ -253,8 +271,7 @@
       <div class="band-inner">
         <h2>Come and try a session</h2>
         <p>
-          We train on Wednesdays and Fridays at Cottesloe
-          School Sports Centre.
+          We train on Wednesdays and Fridays at Cottesloe School Sports Centre.
         </p>
         <a href="join.html" class="btn btn-solid">Get in touch</a>
       </div>

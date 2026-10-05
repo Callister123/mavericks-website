@@ -6,68 +6,56 @@ fetch("data/articles.json")
     // Sort newest → oldest
     articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+    const formatDate = (d) =>
+      new Date(d).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      });
+
     articles.forEach((article) => {
-      const card = document.createElement("article");
+      const isMatch = article.type === "match-report";
+
+      const card = document.createElement("a");
       card.className = "carousel-card";
+      card.href = `article.html?id=${article.id}`;
 
-      // Announcement layout
-      if (article.type === "announcement") {
-        card.innerHTML = `
-        <div class="card-top">
-          <img src="${article.image}" alt="${article.title}" class="carousel-img">
+      card.innerHTML = `
+        <img src="${article.image}" alt="${article.title}" class="carousel-img" loading="lazy">
+        <div class="carousel-overlay"></div>
+        <span class="article-tag">${article.type.replace("-", " ")}</span>
+        ${isMatch ? `<span class="score-badge">${article.score}</span>` : ""}
+        <div class="carousel-body">
+          <span class="carousel-date">${formatDate(article.date)}</span>
           <h3>${article.title}</h3>
-          <p>${article.summary}</p>
+          <p>${isMatch ? article.venue : article.summary}</p>
+          <span class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></span>
         </div>
-
-        <div class="card-bottom">
-          <span class="article-tag">${article.type.replace("-", " ")}</span>
-          <a href="article.html?id=${article.id}" class="read-more">Read More →</a>
-        </div>
-        `;
-      }
-      // Match report layout
-      else if (article.type === "match-report") {
-        card.innerHTML = `
-        <div class="card-top">
-          <img src="${article.image}" alt="${article.title}" class="carousel-img">
-          <h3>${article.title}</h3>
-          <p><strong>Score:</strong> ${article.score}</p>
-          <p><strong>Venue:</strong> ${article.venue}</p>
-        </div>
-
-        <div class="card-bottom">
-          <span class="article-tag">${article.type.replace("-", " ")}</span>
-          <a href="article.html?id=${article.id}" class="read-more">Read More →</a>
-        </div>
-        `;
-      }
-      // Fallback layout
-      else {
-        card.innerHTML = `
-        <div class="card-top">
-          <img src="${article.image}" alt="${article.title}" class="carousel-img">
-          <h3>${article.title}</h3>
-          <p>${article.summary}</p>
-        </div>
-
-        <div class="card-bottom">
-          <span class="article-tag">${article.type.replace("-", " ")}</span>
-          <a href="article.html?id=${article.id}" class="read-more">Read More →</a>
-        </div>
-        `;
-      }
+      `;
 
       track.appendChild(card);
     });
+
+    // Arrow buttons
+    const scrollAmount = () => track.querySelector(".carousel-card").offsetWidth + 20;
+    document.querySelector(".carousel-btn.prev").addEventListener("click", () =>
+      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" })
+    );
+    document.querySelector(".carousel-btn.next").addEventListener("click", () =>
+      track.scrollBy({ left: scrollAmount(), behavior: "smooth" })
+    );
+
+    // Featured article (guarded)
     const featured = articles.find((a) => a.type === "featured");
     const container = document.getElementById("featured-article");
-
-    container.innerHTML = `
-      <div class="featured-bg" style="background-image: url('${featured.image}')"></div>
-      <div class="featured-content">
-        <h2>${featured.title}</h2>
-        <p>${featured.summary}</p>
-        <a href="article.html?id=${featured.id}" class="featured-btn">Read More</a>
-      </div>
-    `;
+    if (featured && container) {
+      container.innerHTML = `
+        <div class="featured-bg" style="background-image: url('${featured.image}')"></div>
+        <div class="featured-content">
+          <h2>${featured.title}</h2>
+          <p>${featured.summary}</p>
+          <a href="article.html?id=${featured.id}" class="featured-btn">Read More</a>
+        </div>
+      `;
+    }
   });
