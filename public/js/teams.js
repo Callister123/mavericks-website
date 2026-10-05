@@ -25,8 +25,8 @@ const TEAMS = {
     home: "Bedford University Sports Hall",
   },
   women: {
-    training: [{ when: "Tuesday", where: "Goldington Academy" }],
-    home: "Bedford University sports halls",
+    training: [{ when: "Monday 7:30-9pm", where: "Goldington Academy" }],
+    home: "Bedford University Sports Hall",
   },
   youth: { training: [], home: "" },
 };
