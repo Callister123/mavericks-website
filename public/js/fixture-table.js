@@ -140,30 +140,43 @@ function formatDate(dateString) {
 // ============================
 // LOAD FIXTURES FROM GOOGLE SHEETS
 // ============================
+// Show a single message in place of the table (loading, error or no results)
+function showMessage(text) {
+  const container = document.querySelector(".fixtures-table");
+  if (!container) return;
+  container.innerHTML = `<div class="fixture-row empty" role="status">${esc(text)}</div>`;
+  const pager = document.querySelector(".fixtures-pagination");
+  if (pager) pager.style.display = "none";
+}
+
 async function loadFixtures() {
+  showMessage("Loading fixtures…");
   try {
     const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
     const csvText = await res.text();
+    // If the sheet isn't shared publicly, Google sends back a web page, not CSV
+    if (csvText.trim().startsWith("<"))
+      throw new Error("Sheet did not return CSV");
 
     allFixtures = parseCSV(csvText);
 
-    // Oldest first: the form guide relies on this order, so leave allFixtures alone
+    const now = new Date();
     allFixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    // Compare against the start of today so a match later today still counts as upcoming
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    // Soonest first
-    upcomingFixtures = allFixtures.filter((f) => new Date(f.date) >= today);
-    // Most recent first (filter makes a new array, so reverse() doesn't touch allFixtures)
-    pastFixtures = allFixtures
-      .filter((f) => new Date(f.date) < today)
-      .reverse();
+    upcomingFixtures = allFixtures.filter((f) => new Date(f.date) >= now);
+    pastFixtures = allFixtures.filter((f) => new Date(f.date) < now);
+    upcomingFixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
+    pastFixtures.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     applyFilters();
   } catch (err) {
     console.error("Error loading fixtures:", err);
+    allFixtures = [];
+    const guide = document.getElementById("form-guide");
+    if (guide) guide.innerHTML = "";
+    showMessage(
+      "Fixtures couldn't be loaded right now. Please refresh the page or try again later.",
+    );
   }
 }
 
@@ -173,6 +186,13 @@ async function loadFixtures() {
 function renderFixturesTable(fixtures) {
   const container = document.querySelector(".fixtures-table");
   if (!container) return;
+
+  if (!fixtures.length) {
+    showMessage("No fixtures to show for this team and type yet.");
+    return;
+  }
+  const pager = document.querySelector(".fixtures-pagination");
+  if (pager) pager.style.display = "";
 
   // Apply pagination
   const paginated = paginate(fixtures);
@@ -246,13 +266,12 @@ function applyFilters() {
   const typeFilter = document.getElementById("type-filter")?.value || "all";
 
   const ordered = [...upcomingFixtures, ...pastFixtures];
-  const filtered = ordered.filter(
-    (f) =>
-      {
-        return matchesTeam(f.team, teamFilter) &&
-          (typeFilter === "all" || f.type === typeFilter);
-      },
-  );
+  const filtered = ordered.filter((f) => {
+    return (
+      matchesTeam(f.team, teamFilter) &&
+      (typeFilter === "all" || f.type === typeFilter)
+    );
+  });
 
   renderFixturesTable(filtered);
   renderFormGuide(teamFilter);
