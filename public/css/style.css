@@ -855,7 +855,7 @@ a.gov-card:hover {
   transition: color 0.2s ease;
 }
 .gov-card ul li a:hover {
-  color: var(--button);
+  color: var(--text);
 }
 .gov-card ul li:last-child {
   border-bottom: none;
