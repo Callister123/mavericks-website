@@ -1,13 +1,37 @@
 <header class="top-nav">
   <div class="nav-container">
     <a href="index.html" class="logo-link">
-      <img src="images/mavericks-logo.png" alt="" class="logo" width="48" height="48" />
+      <img src="images/mavericks-logo.png" alt="Club Logo" class="logo" />
       <span class="club-name">MK Mavericks Sports Club</span>
     </a>
 
     <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-      <i class="fa-solid fa-bars"></i>
-      <i class="fa-solid fa-xmark"></i>
+      <svg
+        class="icon-bars"
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg
+        class="icon-close"
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
     </button>
 
     <nav class="main-nav">
@@ -21,12 +45,16 @@
             </button>
             <ul class="dropdown-menu">
               <li><a href="teams.html">Our Squads</a></li>
+              <li class="menu-label" aria-hidden="true">Futsal</li>
               <li><a href="first-team.html">Men's First Team</a></li>
               <li>
                 <a href="development-team.html">Men's Development Team</a>
               </li>
               <li><a href="womens-team.html">Women's Team</a></li>
               <li><a href="youth-teams.html">Youth Teams</a></li>
+              <li class="menu-label" aria-hidden="true">Handball</li>
+              <li><a href="handball-mens.html">Men's Team</a></li>
+              <li><a href="handball-womens.html">Women's Team</a></li>
             </ul>
           </li>
 
