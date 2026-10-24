@@ -2,6 +2,7 @@
    NAVBAR
 ============================ */
 .top-nav {
+  box-sizing: border-box;
   background: #0b1120;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid #1f2937;
@@ -240,7 +241,9 @@ nav button {
     display: none;
     position: absolute;
     top: 100%;
+    left: 0;
     width: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     background: #0b1120;
     padding: 1rem 0;
@@ -1138,6 +1141,19 @@ a.gov-card:hover {
 .facts-cta p {
   font-size: 1.15rem;
   margin-bottom: 1rem;
+}
+.training-location {
+  margin-top: 2rem;
+}
+.training-location h3 {
+  margin-bottom: 0.75rem;
+}
+.training-location iframe {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  border: 0;
+  border-radius: 10px;
 }
 
 .btn-red {

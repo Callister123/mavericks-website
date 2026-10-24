@@ -28,6 +28,10 @@ const TEAMS = {
     training: [{ when: "Monday 7:30-9pm", where: "Goldington Academy" }],
     home: "Bedford University Sports Hall",
   },
+  "handball-womens": {
+    training: [{ when: "8:00-9:30pm", where: "Aylesbury Grammar School" }],
+    home: "",
+  },
   youth: { training: [], home: "" },
 };
 
@@ -94,6 +98,20 @@ function factsHTML(team) {
         .join("")
     : "<li>Get in touch for session details.</li>";
 
+  const mapHTML =
+    team === "handball-womens"
+      ? `
+          <div class="training-location">
+            <h3>Training location</h3>
+            <iframe
+              src="https://www.google.com/maps?q=Aylesbury+Grammar+School,+Walton+Road,+Aylesbury&output=embed"
+              title="Map showing Aylesbury Grammar School"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>`
+      : "";
+
   return `
     <section class="band band-base facts">
       <div class="band-inner">
@@ -114,6 +132,7 @@ function factsHTML(team) {
             <a href="join.html" class="btn btn-red">Join this team</a>
           </div>
         </div>
+        ${mapHTML}
       </div>
     </section>`;
 }

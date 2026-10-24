@@ -3,7 +3,7 @@
   <head>
     <meta
       name="description"
-      content="Explore Mavericks Futsal Club teams, including men's, women's and youth squads. See pathways for development and competitive futsal across the UK."
+      content="Meet the MK Mavericks Women's Handball Team. Find out about the squad, training, fixtures and how to get involved."
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link rel="icon" type="image/png" href="images/favicon.png" />
   </head>
   <body>
@@ -20,9 +24,84 @@
     ============================ -->
     <div id="navbar"></div>
 
-    <!--  Body Content for Handball Women's Team  -->
+    <!-- Hero Section -->
+    <header
+      class="page-hero"
+      style="background-image: url(&quot;/images/handball-action.webp&quot;)"
+    >
+      <div class="page-hero-inner">
+        <h1>Women's Handball Team</h1>
+        <p>
+          Fast, physical and welcoming handball for women in and around
+          Aylesbury. Train with the Mavericks and grow with a supportive club
+          community.
+        </p>
+      </div>
+    </header>
+
+    <!-- Team Overview -->
+    <section class="band band-base">
+      <div class="band-inner">
+        <div class="section-head">
+          <h2>About the team</h2>
+        </div>
+        <div class="facts-split">
+          <div class="facts-info">
+            <h3>Competitive handball</h3>
+            <p>
+              The Mavericks Women's Handball Team brings together players who
+              want to learn, improve and compete. Whether you are returning to
+              the sport or trying handball for the first time, there is a place
+              for you in the squad.
+            </p>
+            <p>
+              Sessions combine technical work, tactical understanding and
+              plenty of match play in a positive team environment.
+            </p>
+          </div>
+          <div class="facts-cta">
+            <h3>New players welcome</h3>
+            <p>
+              Get in touch to find out about upcoming sessions, playing
+              experience and current squad availability.
+            </p>
+            <a href="join.html" class="btn btn-red">Join the team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fixtures and Results are populated by teams.js -->
+    <div id="team-page" data-team="handball-womens"></div>
+
+    <!-- Handball Programme -->
+    <section class="band band-base staff">
+      <div class="band-inner">
+        <div class="section-head"><h2>Handball programme</h2></div>
+        <div class="cards" style="margin-top: 0">
+          <div class="card">
+            <h3>Training</h3>
+            <p><strong>8:00–9:30pm</strong></p>
+            <p>Aylesbury Grammar School</p>
+          </div>
+          <div class="card">
+            <h3>Match days</h3>
+            <p>Follow the fixtures section for upcoming games and results.</p>
+          </div>
+          <div class="card">
+            <h3>All abilities</h3>
+            <p>Players of different experience levels are encouraged to get involved.</p>
+          </div>
+          <div class="card">
+            <h3>Based in Aylesbury</h3>
+            <p>Part of the wider MK Mavericks Sports Club community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div id="footer"></div>
     <script src="js/global.js"></script>
+    <script src="js/teams.js"></script>
   </body>
 </html>
