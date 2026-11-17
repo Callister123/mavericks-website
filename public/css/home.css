@@ -1,15 +1,3 @@
-/* ============================
-   HOME PAGE - brand palette + bands
-   Load AFTER style.css
-============================ */
-:root {
-  --red: #db1516;
-  --white: #ffffff;
-  --yellow: #fdcb08;
-  --blue: #1946c5;
-  --ink: #111827;
-}
-
 /* ---------- Bands (one per homepage section) ---------- */
 .band {
   padding: 4rem 2rem;

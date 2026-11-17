@@ -2,31 +2,35 @@
    Theme Variables
 ============================ */
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Archivo+Black&family=Khand:wght@300;400;500;600;700&display=swap");
-body.dark-mode {
-  --bg: #050816;
-  --text: #ffffff;
-  --card-bg: #da1415;
-  --card-text: #ffffff;
-  --border: #1f2937;
-  --fixture-text: #ffffff;
-  --button: #da1415;
-  --accent: #da1415;
-}
 :root {
-  --bg: #ffffff;
-  --text: #111827;
-  --card-bg: #db1516;
-  --border: #d1d5db;
-  --card-text: #ffffff;
-  --fixture-text: #ffffff;
-  --button: #da1415;
-  --accent: #da1415;
-  --red: #db1516;
-  --white: #ffffff;
-  --yellow: #fdcb08;
-  --blue: #1946c5;
+  --red: oklch(0.5641 0.2226 28.28);
+  --yellow: oklch(0.8614 0.1751 90.55);
+  --blue: oklch(0.4548 0.2032 264.37);
+  --white: oklch(1 0 0);
+  --ink: oklch(0.2101 0.0318 264.66);
+  
+  --bg: oklch(1 0 0);
+  --text: oklch(0.1395 0.0317 270.28);
+  --card-bg: oklch(0.5641 0.2226 28.28);
+  --border: oklch(0.8717 0.0093 258.34);
+  --card-text: oklch(1 0 0);
+  --fixture-text: oklch(1 0 0);
+  --button: oklch(0.5641 0.2226 28.28);
+  --accent: oklch(0.5641 0.2226 28.28);
   --futsal: var(--yellow);
   --handball: var(--blue);
+
+}
+body.dark-mode {
+  --bg: oklch(0.1395 0.0317 270.28);
+  --text: oklch(1 0 0);
+  --card-bg: oklch(0.5641 0.2226 28.28);
+  --card-text: oklch(1 0 0);
+  --border: oklch(0.2781 0.0296 256.85);
+  --fixture-text: oklch(1 0 0);
+  --button: oklch(0.5641 0.2226 28.28);
+  --accent: oklch(0.5641 0.2226 28.28);
+  --white: oklch(1 0 0);
 }
 /* ============================
    Typography + Base
