@@ -12,11 +12,11 @@
 }
 .band-blue {
   background: var(--blue);
-  color: #fff;
+  color: var(--white);
 }
 .band-red {
   background: var(--red);
-  color: #fff;
+  color: var(--white);
 }
 .band-yellow {
   background: var(--yellow);
@@ -57,12 +57,12 @@
   background:
     linear-gradient(
       90deg,
-      rgba(219, 21, 22, 0.92) 0%,
-      rgba(219, 21, 22, 0.55) 55%,
-      rgba(25, 70, 197, 0.35) 100%
+      oklch(from var(--red) l c h / 0.92) 0%,
+      oklch(from var(--red) l c h / 0.55) 55%,
+      oklch(from var(--blue) l c h / 0.35) 100%
     ),
     url("../images/futsal-action.webp") center / cover;
-  color: #fff;
+  color: var(--white);
   padding: 6rem 2rem;
   min-height: 60vh;
   display: flex;
@@ -93,7 +93,7 @@
   display: inline-block;
   padding: 0.75rem 1.75rem;
   border-radius: 6px;
-  border: 2px solid #fff;
+  border: 2px solid var(--white);
   font-weight: 700;
   font-size: 1.1rem;
   text-decoration: none;
@@ -102,7 +102,7 @@
     color 0.2s ease;
 }
 .btn-solid {
-  background: #fff;
+  background: var(--white);
   color: var(--red);
 }
 .btn-solid:hover {
@@ -112,10 +112,10 @@
 }
 .btn-outline {
   background: transparent;
-  color: #fff;
+  color: var(--white);
 }
 .btn-outline:hover {
-  background: #fff;
+  background: var(--white);
   color: var(--red);
 }
 .btn:focus-visible,
@@ -166,12 +166,12 @@ a.gov-card {
   background:
     linear-gradient(
       90deg,
-      rgba(25, 70, 197, 0.95) 0%,
-      rgba(25, 70, 197, 0.75) 50%,
-      rgba(25, 70, 197, 0.2) 100%
+      oklch(from var(--blue) l c h / 0.95) 0%,
+      oklch(from var(--blue) l c h / 0.75) 50%,
+      oklch(from var(--blue) l c h / 0.2) 100%
     ),
     url("../images/futsal-freekick.webp") center / cover;
-  color: #fff;
+  color: var(--white);
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
@@ -191,8 +191,8 @@ a.gov-card {
     background:
       linear-gradient(
         180deg,
-        rgba(25, 70, 197, 0.9) 0%,
-        rgba(25, 70, 197, 0.8) 100%
+        oklch(from var(--blue) l c h / 0.9) 0%,
+        oklch(from var(--blue) l c h / 0.8) 100%
       ),
       url("../images/futsal-freekick.webp") center / cover;
     padding-top: 4rem;
@@ -288,7 +288,7 @@ a.gov-card {
 .page-hero {
   position: relative;
   background: var(--red) center / cover no-repeat; /* image is set inline on the element */
-  color: #fff;
+  color: var(--white);
   padding: 4.5rem 2rem;
   min-height: 320px;
   display: flex;
@@ -300,9 +300,9 @@ a.gov-card {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(219, 21, 22, 0.92) 0%,
-    rgba(219, 21, 22, 0.55) 60%,
-    rgba(25, 70, 197, 0.35) 100%
+    oklch(from var(--red) l c h / 0.92) 0%,
+    oklch(from var(--red) l c h / 0.55) 60%,
+    oklch(from var(--blue) l c h / 0.35) 100%
   );
 }
 .page-hero--blue {
@@ -311,9 +311,9 @@ a.gov-card {
 .page-hero--blue::before {
   background: linear-gradient(
     90deg,
-    rgba(25, 70, 197, 0.95) 0%,
-    rgba(25, 70, 197, 0.7) 60%,
-    rgba(219, 21, 22, 0.35) 100%
+    oklch(from var(--blue) l c h / 0.95) 0%,
+    oklch(from var(--blue) l c h / 0.7) 60%,
+    oklch(from var(--red) l c h / 0.35) 100%
   );
 }
 .page-hero-inner {
@@ -396,14 +396,14 @@ a.gov-card {
 .page-hero--split::before {
   background: linear-gradient(
     90deg,
-    rgba(219, 21, 22, 0.9) 0%,
-    rgba(219, 21, 22, 0.55) 30%,
-    rgba(219, 21, 22, 0) 58%
+    oklch(from var(--red) l c h / 0.9) 0%,
+    oklch(from var(--red) l c h / 0.55) 30%,
+    oklch(from var(--red) l c h / 0) 58%
   );
 }
 @media (max-width: 768px) {
   .page-hero--split::before {
-    background: rgba(219, 21, 22, 0.78);
+    background: oklch(from var(--red) l c h / 0.78);
   }
 }
 
@@ -422,17 +422,17 @@ a.gov-card {
   border-radius: 50%;
   font-family: "Archivo Black", sans-serif;
   font-size: 0.8rem;
-  color: #fff;
+  color: var(--white);
   flex-shrink: 0;
 }
 .result-w {
-  background: #15803d;
+  background: var(--win);
 }
 .result-d {
-  background: #6b7280;
+  background: var(--draw);
 }
 .result-l {
-  background: var(--red);
+  background: var(--loss);
 }
 
 /* ---------- Form guide: one tidy line on desktop, two columns on phones ---------- */
@@ -462,13 +462,13 @@ a.gov-card {
   border-radius: 50%;
 }
 .form-dot-w {
-  background: #15803d;
+  background: var(--win);
 }
 .form-dot-d {
-  background: #6b7280;
+  background: var(--draw);
 }
 .form-dot-l {
-  background: var(--red);
+  background: var(--loss);
 }
 .form-dot-empty {
   border: 2px solid var(--border);
@@ -530,8 +530,8 @@ a.gov-card {
 }
 .fixtures-filters select option,
 .fixtures-filters select optgroup {
-  background: #fff;
-  color: #111827;
+  background: var(--white);
+  color: var(--ink);
 }
 .fixtures-filters select:focus-visible {
   outline: 3px solid var(--yellow);

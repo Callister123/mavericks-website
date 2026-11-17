@@ -2,9 +2,9 @@
    NAVBAR
 ============================ */
 .top-nav {
-  background: oklch(0.1802 0.0325 266.62);
+  background: var(--nav-bg);
   box-shadow: 0 2px 4px oklch(0 0 0 / 25%);
-  border-bottom: 1px solid oklch(0.2781 0.0296 256.85);
+  border-bottom: 1px solid var(--line-dark);
   padding: 0.75rem 1.5rem;
   position: fixed;
   top: 0;
@@ -32,8 +32,8 @@
   width: 46px;
   height: 24px;
   border-radius: 999px;
-  background: oklch(0.2781 0.0296 256.85);
-  border: 1px solid #374151;
+  background: var(--line-dark);
+  border: 1px solid var(--line-mid);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -50,12 +50,12 @@
   transition: transform 0.25s ease;
 }
 body.dark-mode .theme-toggle {
-  background: #e5e7eb;
-  border-color: #d1d5db;
+  background: var(--on-dark);
+  border-color: var(--line-light);
 }
 body.dark-mode .theme-toggle::after {
   transform: translateX(22px);
-  background: oklch(0.2101 0.0318 264.66);
+  background: var(--ink);
 }
 /* Logo */
 .logo-area {
@@ -87,8 +87,8 @@ body.dark-mode .theme-toggle::after {
   justify-content: flex-end;
   align-items: center;
   padding-right: 1rem;
-  background: #020617;
-  border-bottom: 1px solid oklch(0.2781 0.0296 256.85);
+  background: var(--nav-bg-deep);
+  border-bottom: 1px solid var(--line-dark);
 }
 .nav-right {
   display: flex;
@@ -152,7 +152,7 @@ nav button {
   margin: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.25rem;
-  border-bottom: 1px solid #374151;
+  border-bottom: 1px solid var(--line-mid);
   color: var(--yellow);
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -168,8 +168,8 @@ nav button {
   .main-nav ul li .dropdown-menu {
     display: none;
     position: absolute;
-    background: oklch(0.1802 0.0325 266.62);
-    border: 1px solid oklch(0.2781 0.0296 256.85);
+    background: var(--nav-bg);
+    border: 1px solid var(--line-dark);
     border-radius: 6px;
     padding: 0.5rem 0;
     top: 100%;
@@ -194,7 +194,7 @@ nav button {
     transition: background 0.2s;
   }
   .main-nav ul li .dropdown-menu li a:hover {
-    background: oklch(0.2781 0.0296 256.85);
+    background: var(--line-dark);
   }
   .main-nav ul li .dropdown-menu li.menu-label {
     padding-left: 1rem;
@@ -242,7 +242,7 @@ nav button {
     top: 100%;
     width: 100%;
     flex-direction: column;
-    background: oklch(0.1802 0.0325 266.62);
+    background: var(--nav-bg);
     padding: 1rem 0;
   }
   .main-nav.active {
@@ -255,7 +255,7 @@ nav button {
   .main-nav ul li {
     width: 100%;
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid oklch(0.2781 0.0296 256.85);
+    border-bottom: 1px solid var(--line-dark);
   }
   .main-nav ul li a {
     display: block;
@@ -267,7 +267,7 @@ nav button {
   .main-nav ul li .dropdown-menu {
     display: none;
     position: static;
-    background: oklch(0.2781 0.0296 256.85);
+    background: var(--line-dark);
     padding-left: 1rem;
     border: none;
     border-radius: 0;
@@ -349,7 +349,7 @@ nav button {
   scroll-snap-align: start;
   text-decoration: none;
   color: var(--white);
-  background: oklch(0.1802 0.0325 266.62);
+  background: var(--nav-bg);
   box-shadow: 0 4px 14px oklch(0 0 0 / 30%);
   transition:
     transform 0.3s ease,
@@ -357,7 +357,7 @@ nav button {
 }
 .carousel-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px oklch(0.5636 0.223 28.33 / 35%);
+  box-shadow: 0 12px 28px oklch(from var(--red) l c h / 35%);
 }
 
 .carousel-img {
@@ -377,8 +377,8 @@ nav button {
   inset: 0;
   background: linear-gradient(
     to top,
-    oklch(0.1395 0.0317 270.28 / 95%) 0%,
-    oklch(0.1395 0.0317 270.28 / 55%) 45%,
+    oklch(from var(--night) l c h / 95%) 0%,
+    oklch(from var(--night) l c h / 55%) 45%,
     transparent 75%
   );
 }
@@ -430,7 +430,7 @@ nav button {
   right: 12px;
   padding: 4px 12px;
   background: oklch(1 0 0 / 95%);
-  color: oklch(0.2101 0.0318 264.66);
+  color: var(--ink);
   font-weight: 700;
   border-radius: 8px;
 }
@@ -507,7 +507,7 @@ nav button {
   color: var(--card-text);
   border-radius: 0.75rem;
   padding: 1.5rem;
-  border: 1px solid oklch(0.2781 0.0296 256.85);
+  border: 1px solid var(--line-dark);
 }
 .card h3 {
   margin-bottom: 0.5rem;
@@ -534,10 +534,10 @@ nav button {
   margin-right: 4px;
 }
 .friendly-key {
-  background: oklch(0.6231 0.188 259.81 / 40%);
+  background: oklch(from var(--friendly) l c h / 40%);
 }
 .official-key {
-  background: oklch(0.7952 0.1617 86.05 / 40%);
+  background: oklch(from var(--amber) l c h / 40%);
 }
 .fixtures-filters-row {
   display: flex;
@@ -622,24 +622,24 @@ nav button {
 body.dark-mode .fixture-row.friendly:hover,
 body.dark-mode .fixture-row.official:hover {
   background: var(--white);
-  color: oklch(0.2101 0.0318 264.66);
+  color: var(--ink);
   transform: translateY(-2px);
 }
 body:not(.dark-mode) .fixture-row.friendly:hover,
 body:not(.dark-mode) .fixture-row.official:hover {
-  background: oklch(0.2101 0.0318 264.66);
+  background: var(--ink);
   color: var(--white);
   transform: translateY(-2px);
 }
 .fixture-row.friendly {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: rgba(59, 130, 246, 0.4);
-  border-left: 4px solid oklch(0.2101 0.0318 264.66);
+  background: oklch(from var(--friendly) l c h / 15%);
+  border-color: oklch(from var(--friendly) l c h / 40%);
+  border-left: 4px solid var(--ink);
 }
 .fixture-row.official {
-  background: rgba(234, 179, 8, 0.15);
-  border-color: rgba(234, 179, 8, 0.4);
-  border-left: 4px solid oklch(0.6503 0.1321 85.89 / 94.5%);
+  background: oklch(from var(--amber) l c h / 15%);
+  border-color: oklch(from var(--amber) l c h / 40%);
+  border-left: 4px solid var(--amber-edge);
 }
 .fixtures-pagination {
   display: flex;
@@ -713,7 +713,7 @@ body:not(.dark-mode) .fixture-row.official:hover {
 .contact-form select,
 .contact-form textarea {
   padding: 10px;
-  border: 1px solid oklch(0.8452 0 0);
+  border: 1px solid var(--input-border);
   border-radius: 6px;
 }
 .contact-form button {
@@ -773,7 +773,7 @@ body:not(.dark-mode) .fixture-row.official:hover {
     transform 0.2s ease;
 }
 .divider {
-  color: oklch(0.5103 0 0);
+  color: var(--muted-dark);
   font-size: 20px;
   margin: 0 6px;
   user-select: none;
@@ -784,9 +784,9 @@ body:not(.dark-mode) .fixture-row.official:hover {
 .site-footer {
   text-align: center;
   padding: 20px;
-  background: oklch(0.1776 0 0);
-  color: #9ca3af;
-  border-top: 1px solid oklch(0.2781 0.0296 256.85);
+  background: var(--footer-bg);
+  color: var(--muted);
+  border-top: 1px solid var(--line-dark);
 }
 .social-links {
   margin-top: 12px;
@@ -876,7 +876,7 @@ a.gov-card:hover {
   padding: 0.4rem 0;
   color: var(--card-text);
   opacity: 0.85;
-  border-bottom: 1px solid oklch(0.2781 0.0296 256.85);
+  border-bottom: 1px solid var(--line-dark);
 }
 .gov-card ul li a {
   color: var(--card-text);
@@ -893,13 +893,13 @@ a.gov-card:hover {
 }
 /* Accent colours */
 .gov-yellow h3 {
-  border-left: 6px solid #eab308;
+  border-left: 6px solid var(--amber);
 }
 .gov-green h3 {
-  border-left: 6px solid #01aa1b;
+  border-left: 6px solid var(--gov-green);
 }
 .gov-blue h3 {
-  border-left: 6px solid #66b9db;
+  border-left: 6px solid var(--gov-blue);
 }
 .next-match-card,
 .recent-match-card {
@@ -975,7 +975,7 @@ a.gov-card:hover {
   text-align: right;
 }
 .upcoming-score {
-  color: #f5f5f5;
+  color: var(--white-soft);
 }
 /* Mobile optimisation */
 @media (max-width: 600px) {
@@ -1016,7 +1016,7 @@ a.gov-card:hover {
 }
 
 .sponsors-label span {
-  color: white;
+  color: var(--white);
   font-weight: 600;
   font-size: 1rem;
   text-transform: uppercase;
@@ -1148,7 +1148,7 @@ a.gov-card:hover {
 .btn-red:hover {
   background: var(--blue);
   border-color: var(--blue);
-  color: var(--ink);
+  color: var(--white);
 }
 @media (max-width: 768px) {
   .facts-split {
@@ -1203,7 +1203,7 @@ a.gov-card:hover {
   .fixture-row.open div:nth-child(3) {
     margin-top: 0.4rem;
     padding-top: 0.6rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-top: 1px solid oklch(0 0 0 / 15%);
   }
   .fixture-row:not(.header) div:nth-child(3)::before {
     content: "Time: ";

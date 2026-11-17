@@ -2,35 +2,65 @@
    Theme Variables
 ============================ */
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Archivo+Black&family=Khand:wght@300;400;500;600;700&display=swap");
+/* ----------------------------------------------------------
+   Colour palette (OKLCH)
+   Edit a colour here once and the whole site follows.
+   Format: oklch(Lightness Chroma Hue)
+---------------------------------------------------------- */
 :root {
+  /* Brand */
   --red: oklch(0.5641 0.2226 28.28);
   --yellow: oklch(0.8614 0.1751 90.55);
   --blue: oklch(0.4548 0.2032 264.37);
   --white: oklch(1 0 0);
   --ink: oklch(0.2101 0.0318 264.66);
-  
-  --bg: oklch(1 0 0);
-  --text: oklch(0.1395 0.0317 270.28);
-  --card-bg: oklch(0.5641 0.2226 28.28);
+
+  /* Theme (light mode) */
+  --night: oklch(0.1395 0.0317 270.28);
+  --bg: var(--white);
+  --text: var(--night);
+  --card-bg: var(--red);
   --border: oklch(0.8717 0.0093 258.34);
-  --card-text: oklch(1 0 0);
-  --fixture-text: oklch(1 0 0);
-  --button: oklch(0.5641 0.2226 28.28);
-  --accent: oklch(0.5641 0.2226 28.28);
+  --card-text: var(--white);
+  --fixture-text: var(--white);
+  --button: var(--red);
+  --accent: var(--red);
   --futsal: var(--yellow);
   --handball: var(--blue);
 
+  /* Derived from brand colours (they follow if you change the brand colour) */
+  --red-dark: oklch(from var(--red) calc(l - 0.08) calc(c * 0.85) h);
+
+  /* Fixed neutrals: the same in light and dark mode (nav, footer, borders) */
+  --nav-bg: oklch(0.1802 0.0325 266.62);
+  --nav-bg-deep: oklch(0.1288 0.0406 264.7);
+  --footer-bg: oklch(0.1776 0 0);
+  --line-dark: oklch(0.2781 0.0296 256.85);
+  --line-mid: oklch(0.3729 0.0306 259.73);
+  --line-light: oklch(0.8717 0.0093 258.34);
+  --on-dark: oklch(0.9276 0.0058 264.53);
+  --muted: oklch(0.7137 0.0192 261.32);
+  --muted-dark: oklch(0.5103 0 0);
+  --white-soft: oklch(0.9702 0 0);
+  --input-border: oklch(0.8452 0 0);
+
+  /* Match results */
+  --win: oklch(0.5273 0.1371 150.07);
+  --draw: oklch(0.551 0.0234 264.36);
+  --loss: var(--red);
+
+  /* Fixture rows and accents */
+  --friendly: oklch(0.6231 0.188 259.81);
+  --amber: oklch(0.7952 0.1617 86.05);
+  --amber-edge: oklch(0.6503 0.1321 85.89 / 94.5%);
+  --gov-green: oklch(0.6403 0.2108 143.48);
+  --gov-blue: oklch(0.7462 0.0945 226.82);
 }
+/* Dark mode only overrides what actually changes */
 body.dark-mode {
-  --bg: oklch(0.1395 0.0317 270.28);
-  --text: oklch(1 0 0);
-  --card-bg: oklch(0.5641 0.2226 28.28);
-  --card-text: oklch(1 0 0);
-  --border: oklch(0.2781 0.0296 256.85);
-  --fixture-text: oklch(1 0 0);
-  --button: oklch(0.5641 0.2226 28.28);
-  --accent: oklch(0.5641 0.2226 28.28);
-  --white: oklch(1 0 0);
+  --bg: var(--night);
+  --text: var(--white);
+  --border: var(--line-dark);
 }
 /* ============================
    Typography + Base
