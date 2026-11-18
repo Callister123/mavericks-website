@@ -14,6 +14,8 @@ const RESULT = { w: "Win", d: "Draw", l: "Loss" };
 // ============================
 const HANDBALL_VENUE = "Aylesbury Grammar School, Walton Road, Aylesbury HP21 7RP";
 const HANDBALL_HOME = "Cranfield University Sports Hall";
+const CRANFIELD_VENUE = "Cranfield University Sports Hall, College Road, Cranfield MK43 0AL";
+const BEDFORD_VENUE = "Bedford University Sports Hall, Polhill Avenue, Bedford MK41 9EA";
 
 const TEAMS = {
   first: {
@@ -21,15 +23,15 @@ const TEAMS = {
       { when: "Wednesday 9-10pm", where: "Cottesloe Sports Hall" },
       { when: "Fridays, 7-8pm", where: "Cottesloe Sports Hall", note: "extra session" },
     ],
-    home: "Cranfield University Sports Hall",
+    home: CRANFIELD_VENUE,
   },
   development: {
     training: [{ when: "Wednesday 8-9pm", where: "Cottesloe Sports Hall" }],
-    home: "Bedford University Sports Hall",
+    home: BEDFORD_VENUE,
   },
   women: {
     training: [{ when: "Monday 7:30-9pm", where: "Goldington Academy" }],
-    home: "Bedford University Sports Hall",
+    home: BEDFORD_VENUE,
   },
   "handball-mens": {
     training: [
