@@ -1,4 +1,3 @@
-
 // Fills <div id="team-page" data-team="first"></div> with the team's details
 // and its fixtures/results from the Google Sheet.
 
@@ -12,16 +11,23 @@ const RESULT = { w: "Win", d: "Draw", l: "Loss" };
 // (the key must match the team name used in the Google Sheet)
 // Add a day to "when" if you like, e.g. "Tuesdays, 9-10pm"
 // ============================
-const HANDBALL_VENUE = "Aylesbury Grammar School, Walton Road, Aylesbury HP21 7RP";
+const HANDBALL_VENUE =
+  "Aylesbury Grammar School, Walton Road, Aylesbury HP21 7RP";
 const HANDBALL_HOME = "Cranfield University Sports Hall";
-const CRANFIELD_VENUE = "Cranfield University Sports Hall, College Road, Cranfield MK43 0AL";
-const BEDFORD_VENUE = "Bedford University Sports Hall, Polhill Avenue, Bedford MK41 9EA";
+const CRANFIELD_VENUE =
+  "Cranfield University Sports Hall, College Road, Cranfield MK43 0AL";
+const BEDFORD_VENUE =
+  "Bedford University Sports Hall, Polhill Avenue, Bedford MK41 9EA";
 
 const TEAMS = {
   first: {
     training: [
       { when: "Wednesday 9-10pm", where: "Cottesloe Sports Hall" },
-      { when: "Fridays, 7-8pm", where: "Cottesloe Sports Hall", note: "extra session" },
+      {
+        when: "Fridays, 7-8pm",
+        where: "Cottesloe Sports Hall",
+        note: "extra session",
+      },
     ],
     home: CRANFIELD_VENUE,
   },
@@ -35,12 +41,22 @@ const TEAMS = {
   },
   "handball-mens": {
     training: [
-      { when: "Thursday evenings", where: HANDBALL_VENUE, note: "contact the club to confirm the start time" },
+      {
+        when: "Thursday evenings",
+        where: HANDBALL_VENUE,
+        note: "contact the club to confirm the start time",
+      },
     ],
     home: HANDBALL_HOME,
   },
   "handball-womens": {
-    training: [{ when: "8:00–9:30pm", where: HANDBALL_VENUE, note: "contact the club to confirm the day" }],
+    training: [
+      {
+        when: "8:00–9:30pm",
+        where: HANDBALL_VENUE,
+        note: "contact the club to confirm the day",
+      },
+    ],
     home: HANDBALL_HOME,
   },
   youth: { training: [], home: "" },
@@ -89,7 +105,10 @@ function getResult(f) {
   if (!m) return null;
   let ours = Number(m[1]);
   let theirs = Number(m[2]);
-  if (SCORE_ORDER === "home-away" && !f.home.toLowerCase().includes("mavericks")) {
+  if (
+    SCORE_ORDER === "home-away" &&
+    !f.home.toLowerCase().includes("mavericks")
+  ) {
     [ours, theirs] = [theirs, ours];
   }
   return ours > theirs ? "w" : ours < theirs ? "l" : "d";
@@ -109,19 +128,44 @@ function factsHTML(team) {
         .join("")
     : "<li>Get in touch for session details.</li>";
 
-  const mapHTML =
-    team === "handball-mens" || team === "handball-womens"
-      ? `
-          <div class="training-location">
-            <h3>Training location</h3>
-            <iframe
-              src="https://www.google.com/maps?q=Aylesbury+Grammar+School,+Walton+Road,+Aylesbury&output=embed"
-              title="Map showing Aylesbury Grammar School"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>`
-      : "";
+  // Map locations per team (key must match data-team on the page)
+  const TRAINING_MAPS = {
+    "handball-mens": {
+      query: "Aylesbury+Grammar+School,+Walton+Road,+Aylesbury",
+      title: "Map showing Aylesbury Grammar School",
+    },
+    "handball-womens": {
+      query: "Aylesbury+Grammar+School,+Walton+Road,+Aylesbury",
+      title: "Map showing Aylesbury Grammar School",
+    },
+    first: {
+      query: "Cottesloe+School,+Wing+Road,+Cottesloe,+Leighton+Buzzard",
+      title: "Map showing Cottesloe Sports Hall",
+    },
+    development: {
+      query: "Cottesloe+School,+Wing+Road,+Cottesloe,+Leighton+Buzzard",
+      title: "Map showing Cottesloe Sports Hall",
+    },
+    women: {
+      query: "Goldington+Academy,+Bedford",
+      title: "Map showing Goldington Academy",
+    },
+  };
+
+  const location = TRAINING_MAPS[team];
+
+  const mapHTML = location
+    ? `
+      <div class="training-location">
+        <h3>Training location</h3>
+        <iframe
+          src="https://www.google.com/maps?q=${location.query}&output=embed"
+          title="${location.title}"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>`
+    : "";
 
   return `
     <section class="band band-base facts">
