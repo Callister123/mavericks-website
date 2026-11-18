@@ -17,6 +17,74 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="icon" type="image/png" href="images/favicon.png" />
+    <style>
+      .management-controls:not([hidden]) {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .management-controls button {
+        inline-size: 2.75rem;
+        block-size: 2.75rem;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .management-controls button:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+
+      .management-track {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: min(13rem, 75%);
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0.75rem;
+      }
+
+      .management-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .management-member {
+        scroll-snap-align: start;
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem 0.75rem;
+      }
+
+      .management-member h3 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      .management-avatar {
+        display: grid;
+        place-items: center;
+        inline-size: 6rem;
+        block-size: 6rem;
+        margin: 0 auto 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        overflow: hidden;
+        font-size: 2rem;
+      }
+
+      .management-avatar img {
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+      }
+    </style>
   </head>
 
   <body>
@@ -44,30 +112,78 @@
     <div id="team-page" data-team="development"></div>
 
     <!-- Staff Section -->
-    <section class="band band-base staff">
+    <section class="band band-base" aria-labelledby="management-title">
       <div class="band-inner">
-        <div class="section-head"><h2>Staff</h2></div>
-        <div class="cards" style="margin-top: 0">
-          <div class="card">
-            <h3>Head Coach</h3>
-            <p>Flavio Damasio</p>
-          </div>
-
-          <div class="card">
-            <h3>Assistant Coach</h3>
-            <p>N/A</p>
-          </div>
-
-          <div class="card">
-            <h3>Team Physio</h3>
-            <p>N/A</p>
-          </div>
-
-          <div class="card">
-            <h3>Team Manager</h3>
-            <p>Igor Marques</p>
+        <div class="section-head">
+          <h2 id="management-title">Meet the management team</h2>
+          <div class="management-controls" hidden>
+            <button
+              type="button"
+              data-direction="-1"
+              aria-label="Previous team member"
+              aria-controls="management-track"
+            >
+              <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-direction="1"
+              aria-label="Next team member"
+              aria-controls="management-track"
+            >
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
+        <!-- To add a photo, replace the icon for that member with
+             <img src="images/your-photo.webp" alt="" loading="lazy">. -->
+        <ul
+          class="management-track"
+          id="management-track"
+          aria-labelledby="management-title"
+          tabindex="0"
+        >
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h3>Flavio</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h3>Igor</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <img
+                src="images/headshots/D C Headshot.png"
+                alt="Captain"
+                loading="lazy"
+              />
+            </div>
+            <h3>Caley</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h3>Vice Captain</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h3></h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h3></h3>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -78,5 +194,37 @@
 
     <script src="js/global.js"></script>
     <script src="js/teams.js"></script>
+    <script>
+      (() => {
+        const track = document.getElementById("management-track");
+        const controls = document.querySelector(".management-controls");
+        const [previous, next] = controls.querySelectorAll("button");
+        const [firstCard, secondCard] = track.children;
+
+        function updateControls() {
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          controls.hidden = maxScroll <= 1;
+          previous.disabled = track.scrollLeft <= 1;
+          next.disabled = track.scrollLeft >= maxScroll - 1;
+        }
+
+        controls.addEventListener("click", (event) => {
+          const button = event.target.closest("button");
+          if (!button) return;
+          const cardStep = secondCard.offsetLeft - firstCard.offsetLeft;
+          const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          ).matches;
+          track.scrollBy({
+            left: Number(button.dataset.direction) * cardStep,
+            behavior: reduceMotion ? "instant" : "smooth",
+          });
+        });
+
+        track.addEventListener("scroll", updateControls, { passive: true });
+        new ResizeObserver(updateControls).observe(track);
+        updateControls();
+      })();
+    </script>
   </body>
 </html>
