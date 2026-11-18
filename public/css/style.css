@@ -2,6 +2,7 @@
    NAVBAR
 ============================ */
 .top-nav {
+  box-sizing: border-box;
   background: var(--nav-bg);
   box-shadow: 0 2px 4px oklch(0 0 0 / 25%);
   border-bottom: 1px solid var(--line-dark);
