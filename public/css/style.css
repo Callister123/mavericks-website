@@ -556,6 +556,29 @@ nav button {
   gap: 10px;
   margin-bottom: 1rem;
 }
+.fixtures-filters select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-color: var(--red);
+  color: #fff;
+  padding-right: 2rem;
+}
+
+.fixtures-filters select option,
+.fixtures-filters select optgroup {
+  font-family: "Khand", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  background: #fff;
+  color: #111827;
+}
+
+.fixtures-filters select optgroup {
+  font-family: "Archivo Black", sans-serif;
+}
 .fixtures-key {
   display: flex;
   align-items: center;
@@ -566,7 +589,6 @@ nav button {
 }
 .fixtures-filters button {
   font-family: inherit;
-  background: var(--card-bg);
   color: var(--card-text);
   border: 1px solid var(--border);
   font-weight: 600;
