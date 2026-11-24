@@ -6,14 +6,6 @@
   margin: 0;
   padding: 0;
 }
-body {
-  padding-top: 60px;
-}
-.responsive-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
 /* ============================
    Section Layout
 ============================ */
@@ -49,32 +41,12 @@ body {
 /* ============================
    About Page Layout
 ============================ */
-.about-two-col img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--line-dark);
-}
-.about-block {
-  margin-bottom: 2rem;
-}
-.about-block h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-  color: var(--button);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 .benefits-list {
   margin-top: 1rem;
   padding-left: 1.25rem;
 }
 .benefits-list li {
   margin-bottom: 0.5rem;
-}
-.cta-button:hover {
-  background: var(--red-dark);
-  transform: translateY(-2px);
 }
 .dna-list {
   list-style-type: none;

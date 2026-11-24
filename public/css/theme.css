@@ -25,11 +25,6 @@
   --fixture-text: var(--white);
   --button: var(--red);
   --accent: var(--red);
-  --futsal: var(--yellow);
-  --handball: var(--blue);
-
-  /* Derived from brand colours (they follow if you change the brand colour) */
-  --red-dark: oklch(from var(--red) calc(l - 0.08) calc(c * 0.85) h);
 
   /* Fixed neutrals: the same in light and dark mode (nav, footer, borders) */
   --nav-bg: oklch(0.1802 0.0325 266.62);
@@ -72,6 +67,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  padding-top: 60px;
 }
 h1,
 h2,
@@ -85,12 +81,6 @@ em,
 i {
   font-family: "Allura", cursive;
 }
-.sport-futsal h3 {
-  border-left: 6px solid var(--futsal);
-}
-.sport-handball h3 {
-  border-left: 6px solid var(--handball);
-}
 /* ============================
    Animations
 ============================ */
@@ -102,16 +92,5 @@ i {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@keyframes pulse {
-  0% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.4;
   }
 }

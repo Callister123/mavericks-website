@@ -244,13 +244,6 @@ a.gov-card {
   background: var(--ink);
 }
 
-/* ---------- Fixtures: active filter in yellow ---------- */
-.fixtures-filters button.active {
-  background: var(--yellow);
-  color: var(--ink);
-  border-color: var(--yellow);
-}
-
 /* ---------- Sponsors ---------- */
 .sponsors-band {
   border-top: 1px solid var(--border);

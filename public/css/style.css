@@ -59,11 +59,6 @@ body.dark-mode .theme-toggle::after {
   background: var(--ink);
 }
 /* Logo */
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
 .logo {
   width: 48px;
   height: 48px;
@@ -307,10 +302,7 @@ nav button {
 }
 .featured-article {
   position: relative;
-  height: 350px;
-  border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 2rem;
 }
 .featured-bg {
   position: absolute;
@@ -526,18 +518,7 @@ nav button {
   margin-bottom: 0.5rem;
 }
 .cards a.card {
-  display: block;
-  text-decoration: none;
   cursor: pointer;
-}
-.cards a.card:hover {
-  outline: 3px solid var(--yellow);
-}
-.fixtures-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
 }
 .key-item {
   width: 16px;
@@ -569,6 +550,8 @@ nav button {
   gap: 8px 12px;
   font-size: 0.9rem;
   color: var(--text);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .fixtures-filters label {
@@ -592,6 +575,7 @@ nav button {
   max-width: 100%;
   min-width: 0;             
   cursor: pointer;
+  text-overflow: ellipsis;
 }
 
 .fixtures-filters select option,
@@ -612,24 +596,6 @@ nav button {
   font-size: 0.9rem;
   color: var(--text);
 }
-.fixtures-filters button {
-  font-family: inherit;
-  color: var(--card-text);
-  border: 1px solid var(--border);
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.fixtures-filters button:hover {
-  background: var(--accent);
-  color: var(--white);
-}
-.fixtures-filters button.active {
-  background: var(--accent);
-  color: var(--white);
-}
 .fixtures-table {
   display: flex;
   flex-direction: column;
@@ -637,7 +603,6 @@ nav button {
   gap: 6px;
   margin-top: 1rem;
 }
-
 .fixture-row.header {
   background: var(--accent);
   color: var(--white);
@@ -661,13 +626,6 @@ nav button {
     border-color 0.25s ease,
     color 0.25s ease;
   animation: fadeInUp 0.4s ease forwards;
-}
-.fixture-row.removing {
-  opacity: 0;
-  transform: translateY(-4px);
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
 }
 body.dark-mode .fixture-row.friendly:hover,
 body.dark-mode .fixture-row.official:hover {
@@ -803,25 +761,6 @@ body:not(.dark-mode) .fixture-row.official:hover {
 /* ============================
    ABOUT PAGE
 ============================ */
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: var(--text);
-}
-.cta-button {
-  display: inline-block;
-  background: var(--button);
-  color: var(--white);
-  padding: 0.75rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
-  transition:
-    background 0.25s ease,
-    transform 0.2s ease;
-}
 .divider {
   color: var(--muted-dark);
   font-size: 20px;
@@ -839,6 +778,7 @@ body:not(.dark-mode) .fixture-row.official:hover {
   border-top: 1px solid var(--line-dark);
 }
 .social-links {
+  flex-wrap: wrap;
   margin-top: 12px;
   display: flex;
   justify-content: center;
@@ -890,26 +830,11 @@ body:not(.dark-mode) .fixture-row.official:hover {
   object-fit: cover;
   display: block;
 }
-.gov-red h3 {
-  border-left: 6px solid var(--button);
-}
 a.gov-card {
-  text-decoration: none;
   transition: transform 0.2s ease;
 }
 a.gov-card:hover {
   transform: translateY(-3px);
-}
-.gov-card p {
-  padding: 0 1.25rem 1.25rem;
-  color: var(--card-text);
-  opacity: 0.85;
-}
-.sports-grid .gov-image {
-  height: auto;
-  aspect-ratio: 4 / 3;
-  background-position: var(--focus, center);
-  filter: none;
 }
 .gov-card h3 {
   font-size: 1.4rem;
@@ -951,103 +876,12 @@ a.gov-card:hover {
 .gov-blue h3 {
   border-left: 6px solid var(--gov-blue);
 }
-.next-match-card,
-.recent-match-card {
-  background: var(--card-bg);
-  border: 2px solid var(--button);
-  padding: 1.25rem 1.5rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.next-match-title,
-.recent-match-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.25rem;
-}
-
-.next-match-teams,
-.recent-match-teams {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--fixture-text);
-}
-
-.next-match-details,
-.recent-match-details {
-  font-size: 0.9rem;
-  color: var(--fixture-text);
-  opacity: 0.9;
-}
-
-.recent-match-score {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 0.4rem;
-  color: var(--fixture-text);
-}
-.highlight-card {
-  background: var(--card-bg);
-  border: 2px solid var(--button);
-  padding: 1.25rem 1.5rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  animation: fadeInUp 0.6s ease forwards;
-}
-.highlight-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--card-text);
-  margin-bottom: 0.75rem;
-}
-.highlight-left {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--card-text);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.highlight-score {
-  font-size: 1.3rem;
-  font-weight: 700;
-  min-width: 50px;
-  text-align: right;
-}
-.upcoming-score {
-  color: var(--white-soft);
-}
-/* Mobile optimisation */
-@media (max-width: 600px) {
-  .highlight-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .highlight-score {
-    align-self: flex-end;
-    margin-top: 0.5rem;
-  }
-}
 .carousel {
   min-width: 100%;
   display: flex;
   padding-bottom: 1em;
   animation: fadeInUp 0.6s ease forwards;
   overflow: hidden;
-}
-.carousel::-webkit-scrollbar {
-  display: none;
 }
 .group {
   display: flex;
@@ -1056,15 +890,6 @@ a.gov-card:hover {
   justify-content: center;
   gap: 1em;
 }
-.sponsors-label {
-  margin-left: 1em;
-  background: var(--card-bg);
-  padding: 0.75rem 1.25rem;
-  border-radius: 50px;
-  display: inline-block;
-  text-align: center;
-}
-
 .sponsors-label span {
   color: var(--white);
   font-weight: 600;
@@ -1128,31 +953,6 @@ a.gov-card:hover {
 .join-email:hover {
   text-decoration: underline;
 }
-.sport-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-.sport-card:hover {
-  transform: translateY(-4px);
-}
-.sport-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-.sport-link {
-  margin-top: auto;
-  padding-top: 0.75rem;
-  font-weight: 700;
-}
-.sport-cards {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-/* ---------- Team pages: training / join split ---------- */
 .facts-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1364,25 +1164,5 @@ a.gov-card:hover {
       rgba(219, 21, 22, 0.88) 55%,
       rgba(219, 21, 22, 0.25) 100%
     );
-  }
-}
-.fixtures-filters-row > *,
-.fixtures-filters {
-  min-width: 0;
-  max-width: 100%;
-}
-.fixtures-filters select {
-  text-overflow: ellipsis;
-}
-.social-links {
-  flex-wrap: wrap;
-}
-@media (max-width: 480px) {
-  .social-links {
-    flex-wrap: wrap;
-    gap: 14px;
-  }
-  .social-links .divider {
-    display: none;
   }
 }
