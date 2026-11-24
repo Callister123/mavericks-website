@@ -545,40 +545,46 @@ nav button {
 .fixtures-filters-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   gap: 20px;
   margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 .fixtures-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 1rem;
+  margin-bottom: 0;
 }
+
+.fixtures-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 0;
+}
+
 .fixtures-filters select {
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 0.6rem center;
-  background-color: var(--red);
-  color: #fff;
-  padding-right: 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .fixtures-filters select option,
 .fixtures-filters select optgroup {
-  font-family: "Khand", sans-serif;
-  font-weight: 600;
+  font-family: inherit;
+  font-size: 1rem;
   font-style: normal;
-  background: #fff;
-  color: #111827;
+  font-weight: 700;
+  color: var(--text);
 }
 
-.fixtures-filters select optgroup {
-  font-family: "Archivo Black", sans-serif;
-}
 .fixtures-key {
   display: flex;
   align-items: center;
