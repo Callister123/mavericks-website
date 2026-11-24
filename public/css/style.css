@@ -439,12 +439,6 @@ nav button {
   font-weight: 700;
   border-radius: 8px;
 }
-.read-more i {
-  font-family: "Font Awesome 6 Free";
-  font-style: normal;
-  display: inline-block;
-  transition: transform 0.25s ease;
-}
 .carousel-card:hover .read-more i {
   transform: translateX(5px);
 }

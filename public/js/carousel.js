@@ -29,7 +29,7 @@ fetch("data/articles.json")
           <span class="carousel-date">${formatDate(article.date)}</span>
           <h3>${article.title}</h3>
           <p>${isMatch ? article.venue : article.summary}</p>
-          <span class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+          <span class="read-more">Read more</span>
         </div>
       `;
 
