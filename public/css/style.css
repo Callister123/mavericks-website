@@ -335,9 +335,11 @@ nav button {
   display: flex;
   gap: 1.25rem;
   overflow-x: auto;
+  max-width: 100%;
   scroll-snap-type: x mandatory;
   padding: 0.5rem 0.25rem 1rem;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 .carousel-track::-webkit-scrollbar {
   display: none;
@@ -345,7 +347,7 @@ nav button {
 
 .carousel-card {
   position: relative;
-  flex: 0 0 300px;
+  flex: 0 0 85%;
   height: 380px;
   border-radius: 14px;
   overflow: hidden;
