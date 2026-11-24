@@ -535,21 +535,20 @@ nav button {
 }
 .fixtures-filters-row {
   display: flex;
-  flex-wrap: wrap;          
-  justify-content: center;  
-  align-items: center;
-  gap: 8px 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px 24px;
+  margin-bottom: 1rem;
   font-size: 0.9rem;
   color: var(--text);
 }
 .fixtures-filters {
   display: flex;
-  flex-wrap: wrap;          
-  justify-content: center;  
-  align-items: center;
-  gap: 8px 12px;
-  font-size: 0.9rem;
-  color: var(--text);
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1rem;
   min-width: 0;
   max-width: 100%;
 }
@@ -560,9 +559,8 @@ nav button {
   gap: 0.2rem;
   font-weight: 700;
   font-size: 0.95rem;
+  flex: 0 0 200px;
   min-width: 0;
-  flex: 1 1 140px;
-  max-width: 100%;    
 }
 
 .fixtures-filters select {
@@ -682,8 +680,19 @@ body:not(.dark-mode) .fixture-row.official:hover {
 @media (max-width: 700px) {
   .fixture-row,
   .fixture-row.header {
+    flex-direction: column;
+    align-items: stretch;
     grid-template-columns: 1fr 1fr;
     row-gap: 6px;
+  }
+  .fixtures-filters {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .fixtures-filters label {
+    flex: none;
+    width: 100%;
   }
   .fixture-row div:nth-child(3),
   .fixture-row div:nth-child(4),
