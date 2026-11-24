@@ -115,53 +115,72 @@
         <div class="section-head">
           <h2 id="management-title">Meet the management team</h2>
           <div class="management-controls" hidden>
-            <button type="button" data-direction="-1" aria-label="Previous team member" aria-controls="management-track">
+            <button
+              type="button"
+              data-direction="-1"
+              aria-label="Previous team member"
+              aria-controls="management-track"
+            >
               <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <button type="button" data-direction="1" aria-label="Next team member" aria-controls="management-track">
+            <button
+              type="button"
+              data-direction="1"
+              aria-label="Next team member"
+              aria-controls="management-track"
+            >
               <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             </button>
           </div>
         </div>
         <!-- To add a photo, replace the icon for that member with
              <img src="images/your-photo.webp" alt="" loading="lazy">. -->
-        <ul class="management-track" id="management-track" aria-labelledby="management-title" tabindex="0">
-            <li class="management-member">
-              <div class="management-avatar" aria-hidden="true">
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <h3>Flavio</h3>
-            </li>
-            <li class="management-member">
-              <div class="management-avatar" aria-hidden="true">
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <h3>Igor</h3>
-            </li>
-            <li class="management-member">
-              <div class="management-avatar" aria-hidden="true">
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <h3>Captain</h3>
-            </li>
-            <li class="management-member">
-              <div class="management-avatar" aria-hidden="true">
-                <img src="images/headshots/M VC Headshot.png" alt="Vice Captain" loading="lazy">
-              </div>
-              <h3>Kyle</h3>
-            </li>
-            <li class="management-member">
-              <div class="management-avatar" aria-hidden="true">
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <h3></h3>
-            </li>
-            <li class="management-member">
-              <div class="management-avatar" aria-hidden="true">
-                <i class="fa-solid fa-user"></i>
-              </div>
-              <h3></h3>
-            </li>
+        <ul
+          class="management-track"
+          id="management-track"
+          aria-labelledby="management-title"
+          tabindex="0"
+        >
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <img
+                src="images/headshots/M Coach Headshot.png"
+                alt="Head Coach"
+                loading="lazy"
+              />
+            </div>
+            <h3>Flavio</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <img
+                src="images/headshots/M Manager Headshot.png"
+                alt="Club Manager"
+                loading="lazy"
+              />
+            </div>
+            <h3>Igor</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <img
+                src="images/headshots/M C Headshot.png"
+                alt="Captain"
+                loading="lazy"
+              />
+            </div>
+            <h3>Jack</h3>
+          </li>
+          <li class="management-member">
+            <div class="management-avatar" aria-hidden="true">
+              <img
+                src="images/headshots/M VC Headshot.png"
+                alt="Vice Captain"
+                loading="lazy"
+              />
+            </div>
+            <h3>Kyle</h3>
+          </li>
         </ul>
       </div>
     </section>
@@ -175,25 +194,27 @@
         const controls = document.querySelector(".management-controls");
         const [previous, next] = controls.querySelectorAll("button");
         const [firstCard, secondCard] = track.children;
-      
+
         function updateControls() {
           const maxScroll = track.scrollWidth - track.clientWidth;
           controls.hidden = maxScroll <= 1;
           previous.disabled = track.scrollLeft <= 1;
           next.disabled = track.scrollLeft >= maxScroll - 1;
         }
-      
+
         controls.addEventListener("click", (event) => {
           const button = event.target.closest("button");
           if (!button) return;
           const cardStep = secondCard.offsetLeft - firstCard.offsetLeft;
-          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          ).matches;
           track.scrollBy({
             left: Number(button.dataset.direction) * cardStep,
             behavior: reduceMotion ? "instant" : "smooth",
           });
         });
-      
+
         track.addEventListener("scroll", updateControls, { passive: true });
         new ResizeObserver(updateControls).observe(track);
         updateControls();
